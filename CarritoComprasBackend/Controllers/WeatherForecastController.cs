@@ -1,3 +1,4 @@
+using CarritoComprasBackend.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarritoComprasBackend.Controllers;
@@ -12,15 +13,20 @@ public class WeatherForecastController : ControllerBase
     };
 
     private readonly ILogger<WeatherForecastController> _logger;
+    private readonly AppDbContext _context;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
-    {
+    public WeatherForecastController(
+        ILogger<WeatherForecastController> logger,
+        AppDbContext context
+    ) {
         _logger = logger;
+        _context = context;
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
+        var listing = _context.Products.ToList();
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = DateTime.Now.AddDays(index),
