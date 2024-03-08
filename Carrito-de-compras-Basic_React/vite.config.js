@@ -7,4 +7,10 @@ export default defineConfig({
 		port: 3000,
 	},
 	plugins: [react()],
+	define: {
+		'import.meta.env': {
+			VITE_API_KEY: JSON.stringify(process.env.VITE_API_KEY),
+			// Agrega aquí otras variables de entorno necesarias
+		}
+	}
 });
