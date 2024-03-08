@@ -12,7 +12,7 @@ export const ProductElement: React.FC<any> = (props) => {
             <div className="col-xl-3 col-lg-4 col-xs-5">
             <img
                 className="p-3 rounded mx-auto d-block"
-                src={`${"links.images_api_w200"}/${product.name}`}
+                src={product.image}
                 alt="imagen"
             />
             </div>
