@@ -1,24 +1,60 @@
-﻿using CarritoComprasBackend.Services;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ShoppingCartBackEnd.Factories;
+using Services.Domain.Factories;
+using ShoppingCartBackEnd.Entities.Models.InputModels;
 
 namespace CarritoComprasBackend.Controllers
 {
-    [Route("SC/[controller]")]
+    [Route("/[controller]")]
     [ApiController]
     public class StoreController : ControllerBase
     {
         private readonly ILogger<ProductController> _logger;
-        private readonly UserFactory _userFactory;
+        private readonly ProductFactory _productFactory;
 
-        public StoreController(
-            UserFactory userFactory,
-            ILogger<ProductController> logger
+        public StoreController(ProductFactory productFactory, ILogger<ProductController> logger
+           
         )
         {
-            _logger = logger;
-            _userFactory = userFactory;
+            this._logger = logger;
+            this._productFactory = productFactory;            
+        }
+
+        [HttpGet("/Product/GetProducts", Name = "GetProducts")]
+        public async Task<IActionResult> GetProducts()
+        {
+            try
+            {
+                //var products = _productFactory.GetAllProductsAsync();
+                var products = await _productFactory.GetAllProductsAsync();
+                //return Ok(products);                
+                return Ok(products);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+        [HttpPost("/Product/AddProduct", Name = "AddProduct")]
+        public async Task<IActionResult> Add([FromBody] ProductInputModel productInputModel)
+        {
+            try
+            {
+                bool result = false;
+                result = await _productFactory.CreateProductAsync(productInputModel.Sku, productInputModel.Name, productInputModel.Description, productInputModel.AvailableUnits, productInputModel.UnitPrice, productInputModel.Image);
+                if (result)
+                {
+                    return Ok();
+                }
+                else
+                    throw new Exception("Error insertando producto");
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
         }
 
 

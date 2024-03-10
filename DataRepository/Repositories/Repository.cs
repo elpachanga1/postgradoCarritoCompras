@@ -44,7 +44,11 @@ namespace DataRepository.Repositories
 
         public async Task SaveAsync()
         {
-            await _context.SaveChangesAsync().ConfigureAwait(false); 
+            try
+            {
+                await _context.SaveChangesAsync();        
+            }
+            catch (Exception ex) { Console.WriteLine(ex); }
         }
     }
 }
