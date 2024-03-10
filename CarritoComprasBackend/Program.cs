@@ -1,13 +1,24 @@
-using CarritoComprasBackend.Data;
 using CarritoComprasBackend.Services;
+using DataRepository.Data;
+using DataRepository.Repositories;
+using Microsoft.EntityFrameworkCore;
+using ShoppingCartBackEnd.Factories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<AppDbContext>();
-builder.Services.AddTransient<ProductService>();
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("WebApiDatabase")), ServiceLifetime.Scoped);
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+builder.Services.AddTransient<ProductFactory>();
+builder.Services.AddTransient<UserFactory>();
+
+//builder.Services.AddTransient<ProductService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -21,6 +32,7 @@ builder.Services.AddCors(options =>
                        .AllowAnyHeader();
             });
     });
+builder.Services.AddApplicationInsightsTelemetry();
 
 var app = builder.Build();
 
@@ -30,6 +42,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
 
 app.UseHttpsRedirection();
 

@@ -1,0 +1,19 @@
+﻿
+**Instalar la versión de entity framework para .NET Framework 6
+dotnet tool install --global dotnet-ef --version 7.0.7
+**Validar la instalación
+dotnet ef --7.0.7
+
+***Adición de dependencias al proyecto, una vez agregado el paquete no es necesario volver a correrlo
+dotnet add package Microsoft.EntityFrameworkCore --version 7.0.*
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 7.0.*
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 7.0.*  
+
+
+***Trabajar con migraciones -Ejecutar desde la carpeta del proyecto DataRepository
+dotnet ef migrations add InitialCreate --startup-project ..\CarritoComprasBackend\
+dotnet ef database update --startup-project ..\CarritoComprasBackend\
+
+***Cuando se baje el proyecto solo ejecutar 
+dotnet ef database update 
+
