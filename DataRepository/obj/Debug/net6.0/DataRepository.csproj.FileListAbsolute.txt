@@ -1,0 +1,14 @@
+D:\GitHub\Hennrygb\postgradoCarritoCompras\DataRepository\bin\Debug\net6.0\DataRepository.deps.json
+D:\GitHub\Hennrygb\postgradoCarritoCompras\DataRepository\bin\Debug\net6.0\DataRepository.runtimeconfig.json
+D:\GitHub\Hennrygb\postgradoCarritoCompras\DataRepository\bin\Debug\net6.0\DataRepository.dll
+D:\GitHub\Hennrygb\postgradoCarritoCompras\DataRepository\bin\Debug\net6.0\DataRepository.pdb
+D:\GitHub\Hennrygb\postgradoCarritoCompras\DataRepository\obj\Debug\net6.0\DataRepository.csproj.AssemblyReference.cache
+D:\GitHub\Hennrygb\postgradoCarritoCompras\DataRepository\obj\Debug\net6.0\DataRepository.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\Hennrygb\postgradoCarritoCompras\DataRepository\obj\Debug\net6.0\DataRepository.AssemblyInfoInputs.cache
+D:\GitHub\Hennrygb\postgradoCarritoCompras\DataRepository\obj\Debug\net6.0\DataRepository.AssemblyInfo.cs
+D:\GitHub\Hennrygb\postgradoCarritoCompras\DataRepository\obj\Debug\net6.0\DataRepository.csproj.CoreCompileInputs.cache
+D:\GitHub\Hennrygb\postgradoCarritoCompras\DataRepository\obj\Debug\net6.0\DataRepository.dll
+D:\GitHub\Hennrygb\postgradoCarritoCompras\DataRepository\obj\Debug\net6.0\refint\DataRepository.dll
+D:\GitHub\Hennrygb\postgradoCarritoCompras\DataRepository\obj\Debug\net6.0\DataRepository.pdb
+D:\GitHub\Hennrygb\postgradoCarritoCompras\DataRepository\obj\Debug\net6.0\DataRepository.genruntimeconfig.cache
+D:\GitHub\Hennrygb\postgradoCarritoCompras\DataRepository\obj\Debug\net6.0\ref\DataRepository.dll
