@@ -118,5 +118,23 @@ namespace CarritoComprasBackend.Controllers
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
+
+        [HttpGet("/Item/GetItemsByProductId/{ProductId}", Name = "GetItemsByProductId")]
+        public async Task<IActionResult> GetItemsByProductId(int ProductId)
+        {
+            try
+            {
+                var item = await _storeService.GetItemsByProductId(ProductId);
+                if (item == null)
+                {
+                    return NotFound();
+                }
+                return Ok(item);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
     }
 }

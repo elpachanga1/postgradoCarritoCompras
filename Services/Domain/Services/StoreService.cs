@@ -1,11 +1,4 @@
 ﻿using AutoMapper;
-using DataRepository.Repositories;
-using Services.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services.Domain.Services
 {
@@ -14,12 +7,18 @@ namespace Services.Domain.Services
         private readonly IMapper _mapper;
         private readonly ProductService _productService;
         private readonly UserService _userService;
+        private readonly ItemService _itemService;
 
-        public StoreService(IMapper mapper, ProductService productService, UserService userService)
-        {
+        public StoreService(
+            IMapper mapper,
+            ProductService productService,
+            UserService userService,
+            ItemService itemService
+        ) {
             _mapper = mapper;
             _productService = productService;
             _userService = userService;
+            _itemService = itemService;
         }
 
         public async Task<IEnumerable<global::Services.Domain.Models.Product>> GetAllProducts()
@@ -54,6 +53,10 @@ namespace Services.Domain.Services
             bool result = await _userService.CompleteShoppingCart(IdUser);
             return result;
         }
-    }
 
+        public async Task<IEnumerable<global::Services.Domain.Models.Item>> GetItemsByProductId(int ProductId)
+        {
+            return await _itemService.GetItemsByProductId(ProductId);
+        }
+    }
 }

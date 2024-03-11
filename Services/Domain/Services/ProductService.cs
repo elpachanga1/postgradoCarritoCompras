@@ -1,12 +1,5 @@
 ﻿using AutoMapper;
-using DataRepository.Models;
 using DataRepository.Repositories;
-using Services.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services.Domain.Services
 {
@@ -21,19 +14,19 @@ namespace Services.Domain.Services
             this._productRepository = productRepository;
         }
 
-        public async Task<Domain.Models.Product> GetProductById(int Id)
+        public async Task<Models.Product?> GetProductById(int Id)
         {
-            Domain.Models.Product productDomainEntity = null;
+            Models.Product? productDomainEntity = null;
 
             var productDataEntity = await _productRepository.FindByIdAsync(Id);
             if (productDataEntity != null)
             {
-                productDomainEntity = _mapper.Map<Domain.Models.Product>(productDataEntity);
+                productDomainEntity = _mapper.Map<Models.Product>(productDataEntity);
             }          
             return productDomainEntity;
         }
 
-        public async Task<IEnumerable<Domain.Models.Product>> GetAllProducts()
+        public async Task<IEnumerable<Models.Product>> GetAllProducts()
         {
             List<Models.Product> productsDomainEntity = new List<Models.Product>();
             
@@ -41,14 +34,14 @@ namespace Services.Domain.Services
 
             foreach (var dataProduct in productsDataEntity)
             {
-                productsDomainEntity.Add(_mapper.Map<Domain.Models.Product>(dataProduct));
+                productsDomainEntity.Add(_mapper.Map<Models.Product>(dataProduct));
             }
             return productsDomainEntity;           
         }
 
         public async Task<bool> AddProduct(string Sku, string Name, string? Description, int AvailableUnits, float UnitPrice, string? Image)
         {
-            Domain.Models.Product productDomainEntity = new Domain.Models.Product
+            Models.Product productDomainEntity = new Models.Product
             {
                 Sku = Sku, 
                 Name = Name, 
@@ -64,7 +57,5 @@ namespace Services.Domain.Services
 
             return true;
         }
-
-        
     }
 }

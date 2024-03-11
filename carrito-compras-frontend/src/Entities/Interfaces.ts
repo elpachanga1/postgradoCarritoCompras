@@ -8,6 +8,14 @@ export interface Product {
     image?: string;
 }
 
+export interface Item {
+    id: number;
+    idProduct: number;
+    quantity: number;
+    isDeleted: boolean;
+    totalPrice: number;
+}
+
 export interface ProductProps {
     allProducts: Product[];
     setAllProducts: React.Dispatch<React.SetStateAction<Product[]>>;

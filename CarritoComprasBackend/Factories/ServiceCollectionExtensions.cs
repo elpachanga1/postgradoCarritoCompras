@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
-using BusinessRules.RulesForPrice.Handlers;
 using DataRepository.Repositories;
-using Microsoft.Extensions.DependencyInjection;
 using Services.Domain.Services;
 
 namespace ShoppingCartBackEnd.Factories

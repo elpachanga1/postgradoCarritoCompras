@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
 using BusinessRules.RulesForPrice.Handlers;
 using DataRepository.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services.Domain.Services
 {
@@ -41,8 +36,8 @@ namespace Services.Domain.Services
 
         public async Task<bool> CreateItem(int IdProduct, int Quantity)
         {
-            Domain.Models.Item itemDomainEntity = new Domain.Models.Item();
-            Domain.Models.Product productDomainEntity = await this._productService.GetProductById(IdProduct);
+            Domain.Models.Item itemDomainEntity = new Models.Item();
+            Domain.Models.Product? productDomainEntity = await _productService.GetProductById(IdProduct);
 
             itemDomainEntity.IdProduct = IdProduct;
             itemDomainEntity.Quantity = Quantity;
@@ -54,6 +49,20 @@ namespace Services.Domain.Services
             await _itemRepository.SaveAsync();
 
             return true;
+        }
+
+        public async Task<List<Models.Item>> GetItemsByProductId(int ProductId)
+        {
+            List<Models.Item> itemDomainEntity = new List<Models.Item>();
+
+            var itemDataEntity = await _itemRepository.GetAllAsync();
+            var items = itemDataEntity.Where(item => item.IdProduct == ProductId);
+
+            foreach (var dataProduct in items)
+            {
+                itemDomainEntity.Add(_mapper.Map<Models.Item>(dataProduct));
+            }
+            return itemDomainEntity;
         }
     }
 }

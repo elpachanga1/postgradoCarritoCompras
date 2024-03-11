@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Product, ProductProps } from '../entities/Interfaces';
+import { getItemsByProductId } from '../services/ItemService';
 
 export const Header = ({
 	allProducts,
@@ -11,13 +12,18 @@ export const Header = ({
 }: ProductProps) => {
 	const [active, setActive] = useState(false);
 
-	const onDeleteProduct = (product: Product) => {
+	const onDeleteProduct = async (product: Product) => {
+		const items = await getItemsByProductId(product.id);
 		const results = allProducts.filter(
 			(item: Product) => item.id !== product.id
 		);
 
-		setTotal(total - product.unitPrice * product.availableUnits);
-		setCountProducts(countProducts - product.availableUnits);
+		// cambiar por estrategia de subtotal
+		let subTotal = 0;
+		results.forEach(x => subTotal += x.unitPrice);
+
+		setTotal(subTotal);
+		setCountProducts(countProducts - items.length);
 		setAllProducts(results);
 	};
 
