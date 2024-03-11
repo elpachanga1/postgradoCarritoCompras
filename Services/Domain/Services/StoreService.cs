@@ -13,11 +13,13 @@ namespace Services.Domain.Services
     {
         private readonly IMapper _mapper;
         private readonly ProductService _productService;
+        private readonly UserService _userService;
 
-        public StoreService(IMapper mapper, ProductService productService)
+        public StoreService(IMapper mapper, ProductService productService, UserService userService)
         {
             _mapper = mapper;
-            _productService = productService;            
+            _productService = productService;
+            _userService = userService;
         }
 
         public async Task<IEnumerable<global::Services.Domain.Models.Product>> GetAllProducts()
@@ -34,5 +36,12 @@ namespace Services.Domain.Services
         {
             return await _productService.CreateProductAsync(Sku, Name, Description, AvailableUnits, UnitPrice, Image);
         }
+
+        public async Task<bool> AddProductToShoppingCart(string IdUser, int IdProduct, int Quantity)
+        {
+            bool result = await _userService.AddProductToShoppingCart(IdUser, IdProduct, Quantity);
+            return result;
+        }
     }
+
 }

@@ -73,10 +73,11 @@ namespace CarritoComprasBackend.Controllers
 
 
         [HttpPost("/Store/AddProductToShoppingCart", Name = "AddProductToShoppingCart")]
-        public IActionResult AddProductToShoppingCart(string idUser, int IdProduct, int Quantity)
+        public async Task<IActionResult> AddProductToShoppingCart(string IdUser, int IdProduct, int Quantity)
         {
             try
             {
+                await _storeService.AddProductToShoppingCart(IdUser, IdProduct, Quantity);
                 return Ok();
             }
             catch (Exception ex)
@@ -86,7 +87,7 @@ namespace CarritoComprasBackend.Controllers
         }
 
 
-        [HttpDelete("DeleteProductFromShoppingCart", Name = "DeleteProductFromShoppingCart")]
+        [HttpDelete("/Store/DeleteProductFromShoppingCart", Name = "DeleteProductFromShoppingCart")]
         public IActionResult DeleteProductFromShoppingCart(int idUser, int IdItem)
         {
             try
@@ -100,7 +101,7 @@ namespace CarritoComprasBackend.Controllers
         }
 
 
-        [HttpPut("CompleteCartTransaction", Name = "CompleteCartTransaction")]
+        [HttpPut("/Store/CompleteCartTransaction", Name = "CompleteCartTransaction")]
         public IActionResult CompleteCartTransaction(int idUser)
         {
             try

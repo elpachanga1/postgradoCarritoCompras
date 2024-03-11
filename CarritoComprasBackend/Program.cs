@@ -23,6 +23,7 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 builder.Services.AddProductServices();
 builder.Services.AddStoreServices();
+builder.Services.AddShoppingCartServices();
 builder.Services.AddUserServices();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

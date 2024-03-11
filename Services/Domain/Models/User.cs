@@ -8,7 +8,6 @@ namespace Services.Domain.Models
 {
     public class User
     {
-        /*AddProductToShoppingCart();
-        DeleteProductFromShoppingCart();*/
+        
     }
 }

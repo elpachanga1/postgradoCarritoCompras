@@ -38,7 +38,12 @@ namespace ShoppingCartBackEnd.Factories
 
         public static IServiceCollection AddUserServices(this IServiceCollection services)
         {
-            services.AddTransient<UserService>();
+            services.AddTransient<UserService>(serviceProvider =>
+            {
+                var mapper = serviceProvider.GetRequiredService<IMapper>();
+                var shoppingCartService = serviceProvider.GetRequiredService<ShoppingCartService>();
+                return new UserService(mapper, shoppingCartService);
+            });
             return services;
         }
     }

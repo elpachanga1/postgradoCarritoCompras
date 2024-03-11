@@ -20,6 +20,22 @@ namespace Services.Domain.Services
             this._shoppingCartRepository = shoppingCartRepository;
         }
 
+        public async Task<bool> AddProductToShoppingCart(string IdUser, int IdProduct, int Quantity)
+        {
+            bool result = false;
+
+            Domain.Models.ShoppingCart shoppingCart = await GetShoppingCart(IdUser, false);
+            if (shoppingCart == null)
+            {
+                result = await CreateShoppingCart(IdUser);
+                shoppingCart = await GetShoppingCart(IdUser, false);
+            }
+
+
+            return result;
+        }
+
+
         private async Task<Domain.Models.ShoppingCart> GetShoppingCart(string IdUser, bool IsCompleted)
         {
             Domain.Models.ShoppingCart shoppingCartDomainEntity = null;
@@ -42,7 +58,7 @@ namespace Services.Domain.Services
             Domain.Models.ShoppingCart shoppingCartDomainEntity = new Domain.Models.ShoppingCart();
 
             shoppingCartDomainEntity.IdUser = IdUser;
-            shoppingCartDomainEntity.CreationDate = DateTime.Now;
+            shoppingCartDomainEntity.CreationDate = DateTime.UtcNow;
             shoppingCartDomainEntity.UpdatedDate = shoppingCartDomainEntity.CreationDate;
             shoppingCartDomainEntity.IsCompleted = false;
             
