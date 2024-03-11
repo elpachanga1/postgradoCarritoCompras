@@ -13,11 +13,13 @@ namespace Services.Domain.Services
     {
         private readonly IMapper _mapper;
         private IRepository<DataRepository.Models.ShoppingCart> _shoppingCartRepository;
+        private readonly ItemService _itemService;
 
-        public ShoppingCartService(IMapper mapper, IRepository<DataRepository.Models.ShoppingCart> shoppingCartRepository)
+        public ShoppingCartService(IMapper mapper, IRepository<DataRepository.Models.ShoppingCart> shoppingCartRepository, ItemService itemService)
         {
             _mapper = mapper;
             this._shoppingCartRepository = shoppingCartRepository;
+            this._itemService = itemService;
         }
 
         public async Task<bool> AddProductToShoppingCart(string IdUser, int IdProduct, int Quantity)
@@ -30,11 +32,12 @@ namespace Services.Domain.Services
                 result = await CreateShoppingCart(IdUser);
                 shoppingCart = await GetShoppingCart(IdUser, false);
             }
-
+            await _itemService.CreateItem(IdProduct, Quantity);
 
             return result;
         }
 
+        
 
         private async Task<Domain.Models.ShoppingCart> GetShoppingCart(string IdUser, bool IsCompleted)
         {

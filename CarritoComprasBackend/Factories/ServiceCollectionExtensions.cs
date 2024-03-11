@@ -24,7 +24,8 @@ namespace ShoppingCartBackEnd.Factories
             {
                 var mapper = serviceProvider.GetRequiredService<IMapper>();
                 var shoppingCartRepository = serviceProvider.GetRequiredService<IRepository<DataRepository.Models.ShoppingCart>>();
-                return new ShoppingCartService(mapper, shoppingCartRepository);
+                var itemService = serviceProvider.GetRequiredService<ItemService>();
+                return new ShoppingCartService(mapper, shoppingCartRepository, itemService);
             });
             return services;
         }
@@ -43,6 +44,17 @@ namespace ShoppingCartBackEnd.Factories
                 var mapper = serviceProvider.GetRequiredService<IMapper>();
                 var shoppingCartService = serviceProvider.GetRequiredService<ShoppingCartService>();
                 return new UserService(mapper, shoppingCartService);
+            });
+            return services;
+        }
+
+        public static IServiceCollection AddItemServices(this IServiceCollection services)
+        {
+            services.AddTransient<ItemService>(serviceProvider =>
+            {
+                var mapper = serviceProvider.GetRequiredService<IMapper>();
+                var itemRepository = serviceProvider.GetRequiredService<IRepository<DataRepository.Models.Item>>();
+                return new ItemService(mapper, itemRepository);
             });
             return services;
         }

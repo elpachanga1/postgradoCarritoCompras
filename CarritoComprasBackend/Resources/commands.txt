@@ -17,3 +17,6 @@ dotnet ef database update --startup-project ..\CarritoComprasBackend\
 ***Cuando se baje el proyecto solo ejecutar 
 dotnet ef database update 
 
+***Para agregar migraciones
+dotnet ef migrations add AddTotalPrice --startup-project ..\CarritoComprasBackend\
+dotnet ef database update --startup-project ..\CarritoComprasBackend\
