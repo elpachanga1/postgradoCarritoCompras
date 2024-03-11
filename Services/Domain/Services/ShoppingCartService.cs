@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DataRepository.Models;
 using DataRepository.Repositories;
 using Services.Domain.Models;
 using System;
@@ -37,7 +38,37 @@ namespace Services.Domain.Services
             return result;
         }
 
-        
+        public async Task<bool> CompleteShoppingCart(string IdUser)
+        {
+            bool result = false;
+
+            Domain.Models.ShoppingCart shoppingCart = await GetShoppingCart(IdUser, false);
+            if (shoppingCart != null)
+            {
+                shoppingCart.FinishDate = DateTime.UtcNow;
+                shoppingCart.UpdatedDate = DateTime.UtcNow;
+                shoppingCart.IsCompleted = true;
+                var entity = _mapper.Map<DataRepository.Models.ShoppingCart>(shoppingCart);
+                _shoppingCartRepository.Update(entity);
+                await _shoppingCartRepository.SaveAsync();                
+            }
+
+            return result;
+        }
+
+
+        public async Task<bool> DeleteProductFromShoppingCart(string IdUser, int IdItem)
+        {
+            bool result = false;
+
+            Domain.Models.ShoppingCart shoppingCart = await GetShoppingCart(IdUser, false);
+            if (shoppingCart != null)
+            {
+                result = await _itemService.DeleteItem(IdItem);            }
+            
+            return result;
+        }
+
 
         private async Task<Domain.Models.ShoppingCart> GetShoppingCart(string IdUser, bool IsCompleted)
         {

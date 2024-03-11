@@ -19,6 +19,22 @@ namespace Services.Domain.Services
             this._itemRepository = itemRepository;
         }
 
+        public async Task<bool> DeleteItem(int IdItem)
+        {
+            bool result = false;
+
+            var itemDataEntity = await _itemRepository.FindByIdAsync(IdItem);
+            
+            if(itemDataEntity != null) 
+            { 
+                itemDataEntity.IsDeleted = true;
+                _itemRepository.Update(itemDataEntity);
+                await _itemRepository.SaveAsync();
+                result = true;
+            }
+            return result;
+        }
+
         public async Task<bool> CreateItem(int IdProduct, int Quantity)
         {
             Domain.Models.Item itemDomainEntity = new Domain.Models.Item();

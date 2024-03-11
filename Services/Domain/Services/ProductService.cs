@@ -33,7 +33,7 @@ namespace Services.Domain.Services
             return productDomainEntity;
         }
 
-        public async Task<IEnumerable<Domain.Models.Product>> GetAllProductsAsync()
+        public async Task<IEnumerable<Domain.Models.Product>> GetAllProducts()
         {
             List<Models.Product> productsDomainEntity = new List<Models.Product>();
             
@@ -46,7 +46,7 @@ namespace Services.Domain.Services
             return productsDomainEntity;           
         }
 
-        public async Task<bool> CreateProductAsync(string Sku, string Name, string? Description, int AvailableUnits, float UnitPrice, string? Image)
+        public async Task<bool> AddProduct(string Sku, string Name, string? Description, int AvailableUnits, float UnitPrice, string? Image)
         {
             Domain.Models.Product productDomainEntity = new Domain.Models.Product
             {
