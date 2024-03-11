@@ -9,6 +9,7 @@
       "Services/1.0.0": {
         "dependencies": {
           "AutoMapper": "13.0.1",
+          "BusinessRules": "1.0.0",
           "DataRepository": "1.0.0"
         },
         "runtime": {
@@ -186,6 +187,11 @@
           }
         }
       },
+      "BusinessRules/1.0.0": {
+        "runtime": {
+          "BusinessRules.dll": {}
+        }
+      },
       "DataRepository/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "8.0.2",
@@ -314,6 +320,11 @@
       "sha512": "sha512-eoZPynwkZTWFTgnocvXORuCL2yFZtscrUdqVhjxiRULpC7BMg9zhLM5oDZAU5PoX1PgN77hmkKE4a3PQiHqh7Q==",
       "path": "npgsql.entityframeworkcore.postgresql/8.0.2",
       "hashPath": "npgsql.entityframeworkcore.postgresql.8.0.2.nupkg.sha512"
+    },
+    "BusinessRules/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "DataRepository/1.0.0": {
       "type": "project",

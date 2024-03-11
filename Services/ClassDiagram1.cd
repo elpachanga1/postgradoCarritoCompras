@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Services.Domain.Models.Product">
+    <Position X="3.5" Y="1.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>oAACAAAAAAAgAAAAAACAAAQAAAAAABAAEAAQAAAAAAA=</HashCode>
+      <FileName>Domain\Models\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Services.Domain.Models.Store">
+    <Position X="1.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAQQAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Domain\Models\Store.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Services.Domain.Models.User">
+    <Position X="6" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Services.Domain.Models.ShoppingCart">
+    <Position X="7.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Models\ShoppingCart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Services.Domain.Models.Item">
+    <Position X="6.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Models\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Services.Domain.Factories.ProductFactory">
+    <Position X="3.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAkBAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Domain\Factories\ProductFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Services.Domain.Factories.StoreFactory">
+    <Position X="1.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAIAABQAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Domain\Factories\StoreFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Services.Domain.Factories.UserFactory">
+    <Position X="7.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Factories\UserFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

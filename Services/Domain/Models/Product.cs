@@ -17,7 +17,7 @@ namespace Services.Domain.Models
         public float UnitPrice { get; set; }
         public string? Image { get; set; }
 
-        /*public bool HasUnits()
+        public bool HasUnits()
         {
             return (AvailableUnits > 0);
         }
@@ -26,6 +26,6 @@ namespace Services.Domain.Models
         {
             AvailableUnits = AvailableUnits - Quantity;
         }
-          */    
+            
     }
 }

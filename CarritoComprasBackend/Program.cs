@@ -3,7 +3,8 @@ using DataRepository.Data;
 using DataRepository.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Services.Domain.Factories;
+using Services.Domain.Services;
+using ShoppingCartBackEnd.Factories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,17 +21,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
-//Configuración de Fábricas
-//builder.Services.AddTransient<ProductFactory>();
-builder.Services.AddTransient<ProductFactory>(serviceProvider =>
-{
-    var mapper = serviceProvider.GetRequiredService<IMapper>();
-    var productRepository = serviceProvider.GetRequiredService<IRepository<DataRepository.Models.Product>>();    
-    return new ProductFactory(mapper, productRepository);
-});
+builder.Services.AddProductServices();
+builder.Services.AddStoreServices();
+builder.Services.AddUserServices();
 
-//builder.Services.AddTransient<UserFactory>();
-//builder.Services.AddTransient<ProductService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

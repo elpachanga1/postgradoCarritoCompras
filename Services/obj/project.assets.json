@@ -286,6 +286,16 @@
           }
         }
       },
+      "BusinessRules/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/BusinessRules.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BusinessRules.dll": {}
+        }
+      },
       "DataRepository/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -749,6 +759,11 @@
         "postgresql.png"
       ]
     },
+    "BusinessRules/1.0.0": {
+      "type": "project",
+      "path": "../BusinessRules/BusinessRules.csproj",
+      "msbuildProject": "../BusinessRules/BusinessRules.csproj"
+    },
     "DataRepository/1.0.0": {
       "type": "project",
       "path": "../DataRepository/DataRepository.csproj",
@@ -758,6 +773,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "AutoMapper >= 13.0.1",
+      "BusinessRules >= 1.0.0",
       "DataRepository >= 1.0.0"
     ]
   },
@@ -788,6 +804,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+            "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\BusinessRules\\BusinessRules.csproj": {
+              "projectPath": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\BusinessRules\\BusinessRules.csproj"
+            },
             "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\DataRepository\\DataRepository.csproj": {
               "projectPath": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\DataRepository\\DataRepository.csproj"
             }

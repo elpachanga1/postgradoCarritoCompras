@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Services.Domain.Factories;
+using Services.Domain.Services;
 using ShoppingCartBackEnd.Entities.Models.InputModels;
 
 namespace CarritoComprasBackend.Controllers
@@ -9,25 +9,39 @@ namespace CarritoComprasBackend.Controllers
     [ApiController]
     public class StoreController : ControllerBase
     {
-        private readonly ILogger<ProductController> _logger;
-        private readonly ProductFactory _productFactory;
+        private readonly ILogger<StoreController> _logger;
+        private readonly StoreService _storeService;
 
-        public StoreController(ProductFactory productFactory, ILogger<ProductController> logger
-           
-        )
+        public StoreController(ILogger<StoreController> logger, StoreService storeFactory)
         {
             this._logger = logger;
-            this._productFactory = productFactory;            
+            this._storeService = storeFactory;          
         }
 
-        [HttpGet("/Product/GetProducts", Name = "GetProducts")]
+        [HttpGet("/Product/GetProductById/{id}", Name = "GetProductById")]
+        public async Task<IActionResult> GetProductById(int id)
+        {
+            try
+            {
+                var product = await _storeService.GetProductById(id);
+                if (product == null)
+                {
+                    return NotFound(); 
+                }
+                return Ok(product);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+        [HttpGet("/Product/GetAllProducts", Name = "GetAllProducts")]
         public async Task<IActionResult> GetProducts()
         {
             try
             {
-                //var products = _productFactory.GetAllProductsAsync();
-                var products = await _productFactory.GetAllProductsAsync();
-                //return Ok(products);                
+                var products = await _storeService.GetAllProducts();                
                 return Ok(products);
             }
             catch (Exception ex)
@@ -42,7 +56,7 @@ namespace CarritoComprasBackend.Controllers
             try
             {
                 bool result = false;
-                result = await _productFactory.CreateProductAsync(productInputModel.Sku, productInputModel.Name, productInputModel.Description, productInputModel.AvailableUnits, productInputModel.UnitPrice, productInputModel.Image);
+                result = await _storeService.AddProduct(productInputModel.Sku, productInputModel.Name, productInputModel.Description, productInputModel.AvailableUnits, productInputModel.UnitPrice, productInputModel.Image);
                 if (result)
                 {
                     return Ok();
@@ -58,8 +72,8 @@ namespace CarritoComprasBackend.Controllers
         }
 
 
-        [HttpPost("AddProductToShoppingCart", Name = "AddProductToShoppingCart")]
-        public IActionResult AddProductToShoppingCart(int idUser, int IdProduct, int Quantity)
+        [HttpPost("/Store/AddProductToShoppingCart", Name = "AddProductToShoppingCart")]
+        public IActionResult AddProductToShoppingCart(string idUser, int IdProduct, int Quantity)
         {
             try
             {

@@ -14,7 +14,9 @@ namespace DataRepository.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Product> Products { get; set; }
-            
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<Item> Items { get; set; }
+
     }
 
 }
