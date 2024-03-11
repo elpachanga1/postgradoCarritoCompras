@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BusinessRules.RulesForPrice.Handlers;
 using DataRepository.Repositories;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,14 @@ namespace Services.Domain.Services
     {
         private readonly IMapper _mapper;
         private IRepository<DataRepository.Models.Item> _itemRepository;
-        
-        public ItemService(IMapper mapper, IRepository<DataRepository.Models.Item> itemRepository)
+        private readonly ProductService _productService;
+        private readonly PriceCalculatorHandler _priceCalculatorHandler;
+
+        public ItemService(IMapper mapper, IRepository<DataRepository.Models.Item> itemRepository, ProductService productService)
         {
             _mapper = mapper;
             this._itemRepository = itemRepository;
+            this._productService = productService; 
         }
 
         public async Task<bool> DeleteItem(int IdItem)
@@ -38,11 +42,12 @@ namespace Services.Domain.Services
         public async Task<bool> CreateItem(int IdProduct, int Quantity)
         {
             Domain.Models.Item itemDomainEntity = new Domain.Models.Item();
+            Domain.Models.Product productDomainEntity = await this._productService.GetProductById(IdProduct);
 
             itemDomainEntity.IdProduct = IdProduct;
             itemDomainEntity.Quantity = Quantity;
             itemDomainEntity.IsDeleted = false;
-            itemDomainEntity.TotalPrice = 0;
+            itemDomainEntity.TotalPrice = PriceCalculatorHandler.GetInstance().CalculateItemPrice(productDomainEntity.Sku, Quantity, productDomainEntity.UnitPrice);
 
             DataRepository.Models.Item shoppingCartDataEntity = _mapper.Map<DataRepository.Models.Item>(itemDomainEntity);
             await _itemRepository.AddAsync(shoppingCartDataEntity);

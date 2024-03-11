@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BusinessRules.RulesForPrice.Handlers;
 using DataRepository.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using Services.Domain.Services;
@@ -54,9 +55,11 @@ namespace ShoppingCartBackEnd.Factories
             {
                 var mapper = serviceProvider.GetRequiredService<IMapper>();
                 var itemRepository = serviceProvider.GetRequiredService<IRepository<DataRepository.Models.Item>>();
-                return new ItemService(mapper, itemRepository);
+                var productService = serviceProvider.GetRequiredService<ProductService>();
+                return new ItemService(mapper, itemRepository, productService);
             });
             return services;
         }
+
     }
 }
