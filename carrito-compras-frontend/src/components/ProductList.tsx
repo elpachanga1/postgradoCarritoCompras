@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Product, ProductProps } from '../entities/Interfaces';
 import { getProducts } from '../services/ProductService';
+import { addProductToShoppingCart } from '../services/CartService';
 
 export const ProductList = ({
 	allProducts,
@@ -25,20 +26,23 @@ export const ProductList = ({
 	
 	const [products, setProducts] = useState<Product[]>([]);
 	  
-	const onAddProduct = (product: Product) => {
+	const onAddProduct = async (product: Product) => {
+		let products: Product[] = [];
 		if (allProducts.find((item: Product) => item.id === product.id)) {
-			const products = allProducts.map((item: Product) =>
+			products = allProducts.map((item: Product) =>
 				item.id === product.id
 					? { ...item, quantity: item.availableUnits + 1 }
 					: item
 			);
-			setTotal(total + product.unitPrice * product.availableUnits);
-			setCountProducts(countProducts + product.availableUnits);
+			await addProductToShoppingCart(product);
+			setTotal(total + product.unitPrice);
+			setCountProducts(countProducts + 1);
 			return setAllProducts([...products]);
 		}
 
-		setTotal(total + product.unitPrice * product.availableUnits);
-		setCountProducts(countProducts + product.availableUnits);
+		await addProductToShoppingCart(product);
+		setTotal(total + product.unitPrice);
+		setCountProducts(countProducts + 1);
 		setAllProducts([...allProducts, product]);
 	};
 
