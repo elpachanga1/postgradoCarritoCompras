@@ -23,5 +23,20 @@ namespace Services.Domain.Services
             bool result = await _shoppingCartService.AddProductToShoppingCart(IdUser, IdProduct, Quantity);
             return result;
         }
+
+        public async Task<bool> DeleteProductFromShoppingCart(string IdUser, int IdItem)
+        {
+            bool result = false;
+            result = await _shoppingCartService.DeleteProductFromShoppingCart(IdUser, IdItem);
+            return result;
+        }
+
+        public async Task<bool> CompleteShoppingCart(string IdUser)
+        {
+            bool result = false;
+            result = await _shoppingCartService.CompleteShoppingCart(IdUser);
+            return result;
+        }
+
     }
 }

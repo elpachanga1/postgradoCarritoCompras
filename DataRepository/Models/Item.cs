@@ -12,5 +12,6 @@ namespace DataRepository.Models
         public int IdProduct { get; set; }
         public int Quantity { get; set; }
         public bool IsDeleted { get; set; }
+        public float TotalPrice { get; set; }
     }
 }

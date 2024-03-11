@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DataRepository.Models;
 using DataRepository.Repositories;
 using Services.Domain.Models;
 using System;
@@ -13,11 +14,13 @@ namespace Services.Domain.Services
     {
         private readonly IMapper _mapper;
         private IRepository<DataRepository.Models.ShoppingCart> _shoppingCartRepository;
+        private readonly ItemService _itemService;
 
-        public ShoppingCartService(IMapper mapper, IRepository<DataRepository.Models.ShoppingCart> shoppingCartRepository)
+        public ShoppingCartService(IMapper mapper, IRepository<DataRepository.Models.ShoppingCart> shoppingCartRepository, ItemService itemService)
         {
             _mapper = mapper;
             this._shoppingCartRepository = shoppingCartRepository;
+            this._itemService = itemService;
         }
 
         public async Task<bool> AddProductToShoppingCart(string IdUser, int IdProduct, int Quantity)
@@ -30,8 +33,39 @@ namespace Services.Domain.Services
                 result = await CreateShoppingCart(IdUser);
                 shoppingCart = await GetShoppingCart(IdUser, false);
             }
+            await _itemService.CreateItem(IdProduct, Quantity);
+
+            return result;
+        }
+
+        public async Task<bool> CompleteShoppingCart(string IdUser)
+        {
+            bool result = false;
+
+            Domain.Models.ShoppingCart shoppingCart = await GetShoppingCart(IdUser, false);
+            if (shoppingCart != null)
+            {
+                shoppingCart.FinishDate = DateTime.UtcNow;
+                shoppingCart.UpdatedDate = DateTime.UtcNow;
+                shoppingCart.IsCompleted = true;
+                var entity = _mapper.Map<DataRepository.Models.ShoppingCart>(shoppingCart);
+                _shoppingCartRepository.Update(entity);
+                await _shoppingCartRepository.SaveAsync();                
+            }
+
+            return result;
+        }
 
 
+        public async Task<bool> DeleteProductFromShoppingCart(string IdUser, int IdItem)
+        {
+            bool result = false;
+
+            Domain.Models.ShoppingCart shoppingCart = await GetShoppingCart(IdUser, false);
+            if (shoppingCart != null)
+            {
+                result = await _itemService.DeleteItem(IdItem);            }
+            
             return result;
         }
 

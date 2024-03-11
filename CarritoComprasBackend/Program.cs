@@ -25,6 +25,7 @@ builder.Services.AddProductServices();
 builder.Services.AddStoreServices();
 builder.Services.AddShoppingCartServices();
 builder.Services.AddUserServices();
+builder.Services.AddItemServices();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

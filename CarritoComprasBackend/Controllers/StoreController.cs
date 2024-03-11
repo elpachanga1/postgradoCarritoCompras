@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Services.Domain.Services;
 using ShoppingCartBackEnd.Entities.Models.InputModels;
@@ -88,10 +89,12 @@ namespace CarritoComprasBackend.Controllers
 
 
         [HttpDelete("/Store/DeleteProductFromShoppingCart", Name = "DeleteProductFromShoppingCart")]
-        public IActionResult DeleteProductFromShoppingCart(int idUser, int IdItem)
+        public async Task<IActionResult> DeleteProductFromShoppingCartAsync(string IdUser, int IdItem)
         {
+            bool result = false;
             try
             {
+                result = await _storeService.DeleteProductFromShoppingCart(IdUser, IdItem);
                 return Ok();
             }
             catch (Exception ex)
@@ -102,10 +105,12 @@ namespace CarritoComprasBackend.Controllers
 
 
         [HttpPut("/Store/CompleteCartTransaction", Name = "CompleteCartTransaction")]
-        public IActionResult CompleteCartTransaction(int idUser)
+        public async Task<IActionResult> CompleteCartTransaction(string IdUser)
         {
+            bool result = false;
             try
             {
+                result = await _storeService.CompleteshoppingCart(IdUser);
                 return Ok();
             }
             catch (Exception ex)

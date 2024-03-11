@@ -24,7 +24,7 @@ namespace Services.Domain.Services
 
         public async Task<IEnumerable<global::Services.Domain.Models.Product>> GetAllProducts()
         {
-            return await _productService.GetAllProductsAsync();
+            return await _productService.GetAllProducts();
         }
 
         public async Task<global::Services.Domain.Models.Product> GetProductById(int Id)
@@ -34,12 +34,24 @@ namespace Services.Domain.Services
 
         public async Task<bool> AddProduct(string Sku, string Name, string? Description, int AvailableUnits, float UnitPrice, string? Image)
         {
-            return await _productService.CreateProductAsync(Sku, Name, Description, AvailableUnits, UnitPrice, Image);
+            return await _productService.AddProduct(Sku, Name, Description, AvailableUnits, UnitPrice, Image);
         }
 
         public async Task<bool> AddProductToShoppingCart(string IdUser, int IdProduct, int Quantity)
         {
             bool result = await _userService.AddProductToShoppingCart(IdUser, IdProduct, Quantity);
+            return result;
+        }
+
+        public async Task<bool> DeleteProductFromShoppingCart(string IdUser, int IdItem)
+        {
+            bool result = await _userService.DeleteProductFromShoppingCart(IdUser, IdItem);
+            return result;
+        }
+
+        public async Task<bool> CompleteshoppingCart(string IdUser)
+        {
+            bool result = await _userService.CompleteShoppingCart(IdUser);
             return result;
         }
     }
