@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { Item, ShoppingCart } from '../entities/Interfaces';
 import * as CartService from '../services/CartService';
 import * as ShoppingCartUtils from '../utils/ShoppingCartUtils';
@@ -26,14 +27,53 @@ export const Header = ({
 		await CartService.DeleteProductFromShoppingCart(item.id);
 		const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart();
 		setShoppingCart(shoppingCart);
+		Swal.fire(
+			'Deleted!',
+			`Item ${item.id} has been deleted from the shopping cart.`,
+			'success'
+		);
 	};
 
-	const onCleanCart = async () => {
-		await CartService.EmptyShoppingCart();
-		setShoppingCart({
-			items: [],
-			countProducts: 0,
-			total: 0
+	const onCleanCart = () => {
+		Swal.fire({
+			title: 'Are you sure?',
+			text: 'You wont be able to revert this!',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes, delete it!'
+		}).then(async (result) => {
+			if (result.isConfirmed) {
+				await CartService.EmptyShoppingCart();
+				setShoppingCart({
+					items: [],
+					countProducts: 0,
+					total: 0
+				});
+		
+				Swal.fire(
+					'Deleted!',
+					'Shopping Cart Empty',
+					'success'
+				);
+			}
+		});
+	};
+
+	const onPurchase = () => {
+		Swal.fire(
+            'Purchase',
+            'Purchase Completed',
+            'success'
+		).then(async () => {
+			// add CompleteShoppingCart request here
+			await CartService.EmptyShoppingCart();
+			setShoppingCart({
+				items: [],
+				countProducts: 0,
+				total: 0
+			});
 		});
 	};
 
@@ -112,6 +152,10 @@ export const Header = ({
 
 							<button className='btn-clear-all' onClick={onCleanCart}>
 								Vaciar Carrito
+							</button>
+
+							<button className='btn-purchase' onClick={onPurchase}>
+								Finalizar Compra
 							</button>
 						</>
 					) : (
