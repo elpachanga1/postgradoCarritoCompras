@@ -15,3 +15,14 @@ export interface Item {
     isDeleted: boolean;
     totalPrice: number;
 }
+
+export interface ShoppingCart {
+    items: Item[];
+    countProducts: number;
+    total: number;
+}
+
+export interface ComponentProps {
+    shoppingCart: ShoppingCart,
+    setShoppingCart: React.Dispatch<React.SetStateAction<ShoppingCart>>;
+}

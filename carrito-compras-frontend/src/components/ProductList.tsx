@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
-import { Product } from '../entities/Interfaces';
+import { ComponentProps, Product, ShoppingCart } from '../entities/Interfaces';
+import * as CartService from '../services/CartService';
 import * as ProductService from '../services/ProductService';
-import { addProductToShoppingCart } from '../services/CartService';
+import * as ShoppingCartUtils from '../utils/ShoppingCartUtils';
 
-export const ProductList = () => {
+export const ProductList = ({
+	shoppingCart,
+	setShoppingCart,
+}: ComponentProps) => {
 	useEffect(() => {
 		const fetchProducts = async () => {
 			try {
@@ -20,7 +24,9 @@ export const ProductList = () => {
 	const [products, setProducts] = useState<Product[]>([]);
 	  
 	const onAddProduct = async (product: Product) => {
-		await addProductToShoppingCart(product);
+		await CartService.addProductToShoppingCart(product);
+		const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart();
+		setShoppingCart(shoppingCart);
 	};
 
 	return (

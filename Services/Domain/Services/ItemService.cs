@@ -72,7 +72,15 @@ namespace Services.Domain.Services
             }
             else
             {
-                currentItem.Quantity += Quantity;
+                if (currentItem.IsDeleted)
+                {
+                    currentItem.IsDeleted = false;
+                    currentItem.Quantity = Quantity;
+                }
+                else
+                {
+                    currentItem.Quantity += Quantity;
+                }
                 currentItem.TotalPrice = PriceCalculatorHandler.GetInstance().CalculateItemPrice(
                     productDomainEntity.Sku,
                     currentItem.Quantity,
@@ -106,10 +114,14 @@ namespace Services.Domain.Services
             var itemDataEntity = await _itemRepository.GetAllAsync();
             var items = itemDataEntity.Where(item => !item.IsDeleted);
 
-            foreach (var dataProduct in itemDataEntity)
+            if (items != null)
             {
-                itemDomainEntity.Add(_mapper.Map<Models.Item>(dataProduct));
+                foreach (var dataProduct in items)
+                {
+                    itemDomainEntity.Add(_mapper.Map<Models.Item>(dataProduct));
+                }
             }
+            
             return itemDomainEntity;
         }
     }

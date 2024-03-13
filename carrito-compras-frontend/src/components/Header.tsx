@@ -1,24 +1,20 @@
 import { useEffect, useState } from 'react';
-import { Item } from '../entities/Interfaces';
+import { ComponentProps, Item, ShoppingCart } from '../entities/Interfaces';
 import * as ItemService from '../services/ItemService';
 import * as CartService from '../services/CartService';
+import * as ShoppingCartUtils from '../utils/ShoppingCartUtils';
 
-export const Header = () => {
+export const Header = ({
+	shoppingCart,
+	setShoppingCart,
+}: ComponentProps) => {
 	const [active, setActive] = useState(false);
-	const voidItems: Item[] = [];
-	const [items, setItems] = useState(voidItems);
-	const [total, setTotal] = useState(0);
-	const [countProducts, setCountProducts] = useState(0);
 
 	useEffect(() => {
 		const fetchItems = async () => {
 			try {
-				const items: Item[] = await ItemService.getItems();
-				const currentCountProducts = items.reduce((total, item) => total + item.quantity, 0);
-				const currentTotal = items.reduce((total, item) => total + item.totalPrice, 0);
-				setItems(items);
-				setCountProducts(currentCountProducts);
-				setTotal(currentTotal);
+				const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart();
+				setShoppingCart(shoppingCart);
 			} catch (error) {
 				console.error('Error fetching items:', error);
 			}
@@ -32,15 +28,20 @@ export const Header = () => {
 
 		// cambiar por estrategia de subtotal
 		let subTotal = 0;
-
-		setTotal(subTotal);
-		setCountProducts(countProducts - items.length);
+		setShoppingCart({
+			items,
+			countProducts: shoppingCart.countProducts - items.length,
+			total: subTotal
+		});
 	};
 
 	const onCleanCart = async () => {
 		await CartService.EmptyShoppingCart();
-		setTotal(0);
-		setCountProducts(0);
+		setShoppingCart({
+			items: [],
+			countProducts: 0,
+			total: 0
+		});
 	};
 
 	return (
@@ -67,7 +68,7 @@ export const Header = () => {
 						/>
 					</svg>
 					<div className='count-products'>
-						<span id='contador-productos'>{countProducts}</span>
+						<span id='contador-productos'>{shoppingCart.countProducts}</span>
 					</div>
 				</div>
 
@@ -76,10 +77,10 @@ export const Header = () => {
 						active ? '' : 'hidden-cart'
 					}`}
 				>
-					{items.length ? (
+					{shoppingCart.items.length ? (
 						<>
 							<div className='row-product'>
-								{items.map((item: Item) => (
+								{shoppingCart.items.map((item: Item) => (
 									<div className='cart-product' key={item.id}>
 										<div className='info-cart-product'>
 											<span className='cantidad-producto-carrito'>
@@ -113,7 +114,7 @@ export const Header = () => {
 
 							<div className='cart-total'>
 								<h3>Total:</h3>
-								<span className='total-pagar'>${total}</span>
+								<span className='total-pagar'>${shoppingCart.total}</span>
 							</div>
 
 							<button className='btn-clear-all' onClick={onCleanCart}>
