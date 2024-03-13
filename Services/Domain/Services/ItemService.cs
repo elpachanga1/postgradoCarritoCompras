@@ -24,7 +24,7 @@ namespace Services.Domain.Services
 
             var itemDataEntity = await _itemRepository.FindByIdAsync(IdItem);
             
-            if(itemDataEntity != null) 
+            if (itemDataEntity != null) 
             { 
                 itemDataEntity.IsDeleted = true;
                 _itemRepository.Update(itemDataEntity);
@@ -34,18 +34,52 @@ namespace Services.Domain.Services
             return result;
         }
 
+        // empty shopping cart
+        public async Task<bool> DeleteItems()
+        {
+            bool result = false;
+
+            var itemDataEntity = await _itemRepository.GetAllAsync();
+            foreach (var item in itemDataEntity)
+            {
+                item.IsDeleted = true;
+                _itemRepository.Update(item);
+                result = true;
+            }
+            await _itemRepository.SaveAsync();
+            return result;
+        }
+
         public async Task<bool> CreateItem(int IdProduct, int Quantity)
         {
-            Domain.Models.Item itemDomainEntity = new Models.Item();
-            Domain.Models.Product? productDomainEntity = await _productService.GetProductById(IdProduct);
+            var currentItem = (await _itemRepository.GetAllAsync()).FirstOrDefault(x => x.IdProduct == IdProduct);
+            Models.Product? productDomainEntity = await _productService.GetProductById(IdProduct);
 
-            itemDomainEntity.IdProduct = IdProduct;
-            itemDomainEntity.Quantity = Quantity;
-            itemDomainEntity.IsDeleted = false;
-            itemDomainEntity.TotalPrice = PriceCalculatorHandler.GetInstance().CalculateItemPrice(productDomainEntity.Sku, Quantity, productDomainEntity.UnitPrice);
+            if (currentItem == null)
+            {
+                Models.Item itemDomainEntity = new Models.Item();
 
-            DataRepository.Models.Item shoppingCartDataEntity = _mapper.Map<DataRepository.Models.Item>(itemDomainEntity);
-            await _itemRepository.AddAsync(shoppingCartDataEntity);
+                itemDomainEntity.IdProduct = IdProduct;
+                itemDomainEntity.Quantity = Quantity;
+                itemDomainEntity.IsDeleted = false;
+                itemDomainEntity.TotalPrice = PriceCalculatorHandler.GetInstance().CalculateItemPrice(
+                    productDomainEntity.Sku,
+                    Quantity,
+                    productDomainEntity.UnitPrice);
+
+                DataRepository.Models.Item shoppingCartDataEntity = _mapper.Map<DataRepository.Models.Item>(itemDomainEntity);
+                await _itemRepository.AddAsync(shoppingCartDataEntity);
+            }
+            else
+            {
+                currentItem.Quantity += Quantity;
+                currentItem.TotalPrice = PriceCalculatorHandler.GetInstance().CalculateItemPrice(
+                    productDomainEntity.Sku,
+                    currentItem.Quantity,
+                    productDomainEntity.UnitPrice);
+                _itemRepository.Update(currentItem);
+            }
+            
             await _itemRepository.SaveAsync();
 
             return true;
@@ -70,6 +104,7 @@ namespace Services.Domain.Services
             List<Models.Item> itemDomainEntity = new List<Models.Item>();
 
             var itemDataEntity = await _itemRepository.GetAllAsync();
+            var items = itemDataEntity.Where(item => !item.IsDeleted);
 
             foreach (var dataProduct in itemDataEntity)
             {

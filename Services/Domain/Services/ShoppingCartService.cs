@@ -70,6 +70,20 @@ namespace Services.Domain.Services
         }
 
 
+        public async Task<bool> EmptyShoppingCart(string IdUser)
+        {
+            bool result = false;
+
+            Domain.Models.ShoppingCart shoppingCart = await GetShoppingCart(IdUser, false);
+            if (shoppingCart != null)
+            {
+                result = await _itemService.DeleteItems();
+            }
+
+            return result;
+        }
+
+
         private async Task<Domain.Models.ShoppingCart> GetShoppingCart(string IdUser, bool IsCompleted)
         {
             Domain.Models.ShoppingCart shoppingCartDomainEntity = null;

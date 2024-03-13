@@ -14,3 +14,14 @@ export const addProductToShoppingCart = async (product: Product): Promise<any> =
         return [];
     }
 };
+
+export const EmptyShoppingCart = async (): Promise<any> => {
+    try {
+        const response = await axios.delete<any>(`${apiUrl}/Store/EmptyShoppingCart?IdUser=${1}`);
+        console.log(response);
+        return response.data;
+    } catch (error: any) {
+        console.log("Error: ", error.message);
+        return [];
+    }
+};

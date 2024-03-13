@@ -104,6 +104,22 @@ namespace CarritoComprasBackend.Controllers
         }
 
 
+        [HttpDelete("/Store/EmptyShoppingCart", Name = "EmptyShoppingCart")]
+        public async Task<IActionResult> EmptyShoppingCartAsync(string IdUser)
+        {
+            bool result = false;
+            try
+            {
+                result = await _storeService.EmptyShoppingCart(IdUser);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+
         [HttpPut("/Store/CompleteCartTransaction", Name = "CompleteCartTransaction")]
         public async Task<IActionResult> CompleteCartTransaction(string IdUser)
         {

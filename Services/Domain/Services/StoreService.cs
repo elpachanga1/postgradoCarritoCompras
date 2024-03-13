@@ -48,6 +48,12 @@ namespace Services.Domain.Services
             return result;
         }
 
+        public async Task<bool> EmptyShoppingCart(string IdUser)
+        {
+            bool result = await _userService.EmptyShoppingCart(IdUser);
+            return result;
+        }
+
         public async Task<bool> CompleteshoppingCart(string IdUser)
         {
             bool result = await _userService.CompleteShoppingCart(IdUser);

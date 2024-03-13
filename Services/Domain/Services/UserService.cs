@@ -31,6 +31,13 @@ namespace Services.Domain.Services
             return result;
         }
 
+        public async Task<bool> EmptyShoppingCart(string IdUser)
+        {
+            bool result = false;
+            result = await _shoppingCartService.EmptyShoppingCart(IdUser);
+            return result;
+        }
+
         public async Task<bool> CompleteShoppingCart(string IdUser)
         {
             bool result = false;

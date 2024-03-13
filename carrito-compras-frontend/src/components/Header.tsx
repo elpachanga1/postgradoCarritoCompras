@@ -1,34 +1,44 @@
-import { useState } from 'react';
-import { Product, ProductProps } from '../entities/Interfaces';
-import { getItemsByProductId } from '../services/ItemService';
+import { useEffect, useState } from 'react';
+import { Item } from '../entities/Interfaces';
+import * as ItemService from '../services/ItemService';
+import * as CartService from '../services/CartService';
 
-export const Header = ({
-	allProducts,
-	setAllProducts,
-	total,
-	countProducts,
-	setCountProducts,
-	setTotal,
-}: ProductProps) => {
+export const Header = () => {
 	const [active, setActive] = useState(false);
+	const voidItems: Item[] = [];
+	const [items, setItems] = useState(voidItems);
+	const [total, setTotal] = useState(0);
+	const [countProducts, setCountProducts] = useState(0);
 
-	const onDeleteProduct = async (product: Product) => {
-		const items = await getItemsByProductId(product.id);
-		const results = allProducts.filter(
-			(item: Product) => item.id !== product.id
-		);
+	useEffect(() => {
+		const fetchItems = async () => {
+			try {
+				const items: Item[] = await ItemService.getItems();
+				const currentCountProducts = items.reduce((total, item) => total + item.quantity, 0);
+				const currentTotal = items.reduce((total, item) => total + item.totalPrice, 0);
+				setItems(items);
+				setCountProducts(currentCountProducts);
+				setTotal(currentTotal);
+			} catch (error) {
+				console.error('Error fetching items:', error);
+			}
+		};
+	
+		fetchItems();
+	}, []);
+
+	const onDeleteProduct = async (item: Item) => {
+		const items = await ItemService.getItemsByProductId(item.idProduct);
 
 		// cambiar por estrategia de subtotal
 		let subTotal = 0;
-		results.forEach(x => subTotal += x.unitPrice);
 
 		setTotal(subTotal);
 		setCountProducts(countProducts - items.length);
-		setAllProducts(results);
 	};
 
-	const onCleanCart = () => {
-		setAllProducts([]);
+	const onCleanCart = async () => {
+		await CartService.EmptyShoppingCart();
 		setTotal(0);
 		setCountProducts(0);
 	};
@@ -66,20 +76,20 @@ export const Header = ({
 						active ? '' : 'hidden-cart'
 					}`}
 				>
-					{allProducts.length ? (
+					{items.length ? (
 						<>
 							<div className='row-product'>
-								{allProducts.map((product: Product) => (
-									<div className='cart-product' key={product.id}>
+								{items.map((item: Item) => (
+									<div className='cart-product' key={item.id}>
 										<div className='info-cart-product'>
 											<span className='cantidad-producto-carrito'>
-												{product.availableUnits}
+												{item.quantity}
 											</span>
 											<p className='titulo-producto-carrito'>
-												{product.name}
+												{item.idProduct}
 											</p>
 											<span className='precio-producto-carrito'>
-												${product.unitPrice}
+												${item.totalPrice}
 											</span>
 										</div>
 										<svg
@@ -89,7 +99,7 @@ export const Header = ({
 											strokeWidth='1.5'
 											stroke='currentColor'
 											className='icon-close'
-											onClick={() => onDeleteProduct(product)}
+											onClick={() => onDeleteProduct(item)}
 										>
 											<path
 												strokeLinecap='round'

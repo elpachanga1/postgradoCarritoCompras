@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Product, ProductProps } from '../entities/Interfaces';
-import { getProducts } from '../services/ProductService';
+import { useEffect, useState } from 'react';
+import { Product } from '../entities/Interfaces';
+import * as ProductService from '../services/ProductService';
 import { addProductToShoppingCart } from '../services/CartService';
 
-export const ProductList = ({
-	allProducts,
-	setAllProducts,
-	countProducts,
-	setCountProducts,
-	total,
-	setTotal,
-}: ProductProps) => {
+export const ProductList = () => {
 	useEffect(() => {
 		const fetchProducts = async () => {
 			try {
-				const products: Product[] = await getProducts();
+				const products: Product[] = await ProductService.getProducts();
 				setProducts(products);
 			} catch (error) {
 				console.error('Error fetching products:', error);
@@ -27,23 +20,7 @@ export const ProductList = ({
 	const [products, setProducts] = useState<Product[]>([]);
 	  
 	const onAddProduct = async (product: Product) => {
-		let products: Product[] = [];
-		if (allProducts.find((item: Product) => item.id === product.id)) {
-			products = allProducts.map((item: Product) =>
-				item.id === product.id
-					? { ...item, quantity: item.availableUnits + 1 }
-					: item
-			);
-			await addProductToShoppingCart(product);
-			setTotal(total + product.unitPrice);
-			setCountProducts(countProducts + 1);
-			return setAllProducts([...products]);
-		}
-
 		await addProductToShoppingCart(product);
-		setTotal(total + product.unitPrice);
-		setCountProducts(countProducts + 1);
-		setAllProducts([...allProducts, product]);
 	};
 
 	return (

@@ -13,3 +13,14 @@ export const getItemsByProductId = async (productId: number): Promise<Item[]> =>
         return [];
     }
 };
+
+export const getItems = async (): Promise<Item[]> => {
+    try {
+        const response = await axios.get<Item[]>(`${apiUrl}/Item/GetAllItems`);
+        console.log(response);
+        return response.data;
+    } catch (error: any) {
+        console.log("Error: ", error.message);
+        return [];
+    }
+};
