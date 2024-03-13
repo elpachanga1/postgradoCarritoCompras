@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
-import { ComponentProps, Product, ShoppingCart } from '../entities/Interfaces';
+import { Product, ShoppingCart } from '../entities/Interfaces';
 import * as CartService from '../services/CartService';
 import * as ProductService from '../services/ProductService';
 import * as ShoppingCartUtils from '../utils/ShoppingCartUtils';
 
 export const ProductList = ({
-	shoppingCart,
 	setShoppingCart,
-}: ComponentProps) => {
+}: any) => {
 	useEffect(() => {
 		const fetchProducts = async () => {
 			try {

@@ -18,7 +18,6 @@ function App() {
 				setShoppingCart={setShoppingCart}
 			/>
 			<ProductList
-				shoppingCart={shoppingCart}
 				setShoppingCart={setShoppingCart}
 			/>
 		</>

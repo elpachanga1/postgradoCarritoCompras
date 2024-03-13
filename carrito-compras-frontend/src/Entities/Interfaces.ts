@@ -21,8 +21,3 @@ export interface ShoppingCart {
     countProducts: number;
     total: number;
 }
-
-export interface ComponentProps {
-    shoppingCart: ShoppingCart,
-    setShoppingCart: React.Dispatch<React.SetStateAction<ShoppingCart>>;
-}

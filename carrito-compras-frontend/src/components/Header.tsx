@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { ComponentProps, Item, ShoppingCart } from '../entities/Interfaces';
+import { Item, ShoppingCart } from '../entities/Interfaces';
 import * as CartService from '../services/CartService';
 import * as ShoppingCartUtils from '../utils/ShoppingCartUtils';
 
 export const Header = ({
 	shoppingCart,
 	setShoppingCart,
-}: ComponentProps) => {
+}: any) => {
 	const [active, setActive] = useState(false);
 
 	useEffect(() => {
