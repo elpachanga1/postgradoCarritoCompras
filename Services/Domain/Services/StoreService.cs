@@ -58,5 +58,10 @@ namespace Services.Domain.Services
         {
             return await _itemService.GetItemsByProductId(ProductId);
         }
+
+        public async Task<IEnumerable<global::Services.Domain.Models.Item>> GetAllItems()
+        {
+            return await _itemService.GetAllItems();
+        }
     }
 }

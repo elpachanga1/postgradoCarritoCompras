@@ -64,5 +64,18 @@ namespace Services.Domain.Services
             }
             return itemDomainEntity;
         }
+
+        public async Task<List<Models.Item>> GetAllItems()
+        {
+            List<Models.Item> itemDomainEntity = new List<Models.Item>();
+
+            var itemDataEntity = await _itemRepository.GetAllAsync();
+
+            foreach (var dataProduct in itemDataEntity)
+            {
+                itemDomainEntity.Add(_mapper.Map<Models.Item>(dataProduct));
+            }
+            return itemDomainEntity;
+        }
     }
 }
