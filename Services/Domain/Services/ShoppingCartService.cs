@@ -1,12 +1,5 @@
 ﻿using AutoMapper;
-using DataRepository.Models;
 using DataRepository.Repositories;
-using Services.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services.Domain.Services
 {
@@ -27,7 +20,7 @@ namespace Services.Domain.Services
         {
             bool result = false;
 
-            Domain.Models.ShoppingCart shoppingCart = await GetShoppingCart(IdUser, false);
+            Models.ShoppingCart shoppingCart = await GetShoppingCart(IdUser, false);
             if (shoppingCart == null)
             {
                 result = await CreateShoppingCart(IdUser);
@@ -42,7 +35,7 @@ namespace Services.Domain.Services
         {
             bool result = false;
 
-            Domain.Models.ShoppingCart shoppingCart = await GetShoppingCart(IdUser, false);
+            Models.ShoppingCart shoppingCart = await GetShoppingCart(IdUser, false);
             if (shoppingCart != null)
             {
                 shoppingCart.FinishDate = DateTime.UtcNow;
@@ -61,7 +54,7 @@ namespace Services.Domain.Services
         {
             bool result = false;
 
-            Domain.Models.ShoppingCart shoppingCart = await GetShoppingCart(IdUser, false);
+            Models.ShoppingCart shoppingCart = await GetShoppingCart(IdUser, false);
             if (shoppingCart != null)
             {
                 result = await _itemService.DeleteItem(IdItem);            }
@@ -74,7 +67,7 @@ namespace Services.Domain.Services
         {
             bool result = false;
 
-            Domain.Models.ShoppingCart shoppingCart = await GetShoppingCart(IdUser, false);
+            Models.ShoppingCart shoppingCart = await GetShoppingCart(IdUser, false);
             if (shoppingCart != null)
             {
                 result = await _itemService.DeleteItems();
@@ -84,9 +77,9 @@ namespace Services.Domain.Services
         }
 
 
-        private async Task<Domain.Models.ShoppingCart> GetShoppingCart(string IdUser, bool IsCompleted)
+        private async Task<Models.ShoppingCart> GetShoppingCart(string IdUser, bool IsCompleted)
         {
-            Domain.Models.ShoppingCart shoppingCartDomainEntity = null;
+            Models.ShoppingCart shoppingCartDomainEntity = null;
 
             var shoppingCartsDataEntity = await _shoppingCartRepository.GetAllAsync();
 
@@ -94,7 +87,7 @@ namespace Services.Domain.Services
             {
                 if (dataShoppingCart.IdUser == IdUser && dataShoppingCart.IsCompleted == IsCompleted)
                 {
-                    shoppingCartDomainEntity = _mapper.Map<Domain.Models.ShoppingCart>(dataShoppingCart);
+                    shoppingCartDomainEntity = _mapper.Map<Models.ShoppingCart>(dataShoppingCart);
                     break;
                 }
             }
@@ -103,7 +96,7 @@ namespace Services.Domain.Services
 
         private async Task<bool> CreateShoppingCart(string IdUser)
         {
-            Domain.Models.ShoppingCart shoppingCartDomainEntity = new Domain.Models.ShoppingCart();
+            Models.ShoppingCart shoppingCartDomainEntity = new Models.ShoppingCart();
 
             shoppingCartDomainEntity.IdUser = IdUser;
             shoppingCartDomainEntity.CreationDate = DateTime.UtcNow;

@@ -25,3 +25,14 @@ export const EmptyShoppingCart = async (): Promise<any> => {
         return [];
     }
 };
+
+export const DeleteProductFromShoppingCart = async (idItem: number): Promise<any> => {
+    try {
+        const response = await axios.delete<any>(`${apiUrl}/Store/DeleteProductFromShoppingCart?IdUser=${1}&IdItem=${idItem}`);
+        console.log(response);
+        return response.data;
+    } catch (error: any) {
+        console.log("Error: ", error.message);
+        return [];
+    }
+};

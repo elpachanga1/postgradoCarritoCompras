@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { ComponentProps, Item, ShoppingCart } from '../entities/Interfaces';
-import * as ItemService from '../services/ItemService';
 import * as CartService from '../services/CartService';
 import * as ShoppingCartUtils from '../utils/ShoppingCartUtils';
 
@@ -24,15 +23,9 @@ export const Header = ({
 	}, []);
 
 	const onDeleteProduct = async (item: Item) => {
-		const items = await ItemService.getItemsByProductId(item.idProduct);
-
-		// cambiar por estrategia de subtotal
-		let subTotal = 0;
-		setShoppingCart({
-			items,
-			countProducts: shoppingCart.countProducts - items.length,
-			total: subTotal
-		});
+		await CartService.DeleteProductFromShoppingCart(item.id);
+		const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart();
+		setShoppingCart(shoppingCart);
 	};
 
 	const onCleanCart = async () => {
