@@ -36,7 +36,7 @@ public class PriceCalculatorHandler
         {
             return _weightBasedPriceRule;
         }
-        else if (sku.StartsWith("WE"))
+        else if (sku.StartsWith("SP"))
         {
             return _specialDiscountPriceRule;
         }
