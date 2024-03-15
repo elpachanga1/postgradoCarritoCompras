@@ -47,7 +47,7 @@ namespace Services.Domain.Services
             return result;
         }
 
-        public async Task<bool> CreateItem(int IdProduct, int Quantity)
+        public async Task<bool> CreateItem(int IdShoppingCart, int IdProduct, int Quantity)
         {
             var currentItem = (await _itemRepository.GetAllAsync()).FirstOrDefault(x => x.IdProduct == IdProduct);
             Models.Product? productDomainEntity = await _productService.GetProductById(IdProduct);
@@ -56,6 +56,7 @@ namespace Services.Domain.Services
             {
                 Models.Item itemDomainEntity = new Models.Item();
 
+                itemDomainEntity.IdShoppingCart = IdShoppingCart;
                 itemDomainEntity.IdProduct = IdProduct;
                 itemDomainEntity.Quantity = Quantity;
                 itemDomainEntity.IsDeleted = false;
@@ -90,12 +91,12 @@ namespace Services.Domain.Services
             return true;
         }
 
-        public async Task<List<Models.Item>> GetItemsByProductId(int ProductId)
+        public async Task<List<Models.Item>> GetItemsByShoppingCartByProductId(int ShoppingCartId, int ProductId)
         {
             List<Models.Item> itemDomainEntity = new List<Models.Item>();
             
             var itemDataEntity = await _itemRepository.GetAllAsync();
-            var items = itemDataEntity.Where(item => item.IdProduct == ProductId);
+            var items = itemDataEntity.Where(item => item.IdShoppingCart == ShoppingCartId && item.IdProduct == ProductId);
 
             var productReferenceDataEntity = await _productService.GetProductById(ProductId);
             foreach (var dataProduct in items)

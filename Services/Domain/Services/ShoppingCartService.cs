@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using DataRepository.Repositories;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Services.Domain.Services
 {
@@ -23,10 +25,11 @@ namespace Services.Domain.Services
             Models.ShoppingCart shoppingCart = await GetShoppingCart(IdUser, false);
             if (shoppingCart == null)
             {
-                result = await CreateShoppingCart(IdUser);
-                shoppingCart = await GetShoppingCart(IdUser, false);
+                int IdShoppingCart = await CreateShoppingCart(IdUser);
+                shoppingCart = await GetShoppingCartById(IdShoppingCart);
+                result = true;
             }
-            await _itemService.CreateItem(IdProduct, Quantity);
+            await _itemService.CreateItem(shoppingCart.Id, IdProduct, Quantity);
 
             return result;
         }
@@ -98,7 +101,17 @@ namespace Services.Domain.Services
             return shoppingCartDomainEntity;
         }
 
-        private async Task<bool> CreateShoppingCart(string IdUser)
+        private async Task<Models.ShoppingCart> GetShoppingCartById(int Id)
+        {
+            Models.ShoppingCart shoppingCartDomainEntity = null;
+
+            var shoppingCartsDataEntity = await _shoppingCartRepository.FindByIdAsync(Id);
+            
+            shoppingCartDomainEntity = _mapper.Map<Models.ShoppingCart>(shoppingCartsDataEntity);
+            return shoppingCartDomainEntity;
+        }
+
+        private async Task<int> CreateShoppingCart(string IdUser)
         {
             Models.ShoppingCart shoppingCartDomainEntity = new Models.ShoppingCart();
 
@@ -111,17 +124,47 @@ namespace Services.Domain.Services
             await _shoppingCartRepository.AddAsync(shoppingCartDataEntity);
             await _shoppingCartRepository.SaveAsync();            
             
-            return true;        
+            return shoppingCartDataEntity.Id;        
         }
 
         public async Task<IEnumerable<global::Services.Domain.Models.Item>> GetItemsByProductId(int ProductId)
         {
-            return await _itemService.GetItemsByProductId(ProductId);
+            List<Models.Item> filteredItems = new List<Models.Item>();
+            var shoppingCartsDataEntity = await _shoppingCartRepository.GetAllAsync();
+            var completedShoppingCart = shoppingCartsDataEntity.OrderBy(dataShoppingCart => dataShoppingCart.Id)
+     .FirstOrDefault(dataShoppingCart => dataShoppingCart.IsCompleted == false);
+            
+            if (completedShoppingCart != null)
+            {
+                var shoppingCartDomainEntity = _mapper.Map<Models.ShoppingCart>(completedShoppingCart);
+                filteredItems = await _itemService.GetItemsByShoppingCartByProductId(shoppingCartDomainEntity.Id, ProductId);
+            }            
+
+            return filteredItems;
         }
 
         public async Task<IEnumerable<global::Services.Domain.Models.Item>> GetAllItems()
         {
-            return await _itemService.GetAllItems();
+            List<Models.Item> filteredItems = new List<Models.Item>();
+            
+            var shoppingCartsDataEntity = await _shoppingCartRepository.GetAllAsync();
+            var completedShoppingCart = shoppingCartsDataEntity.OrderBy(dataShoppingCart => dataShoppingCart.Id) 
+     .FirstOrDefault(dataShoppingCart => dataShoppingCart.IsCompleted == false);
+
+            if (completedShoppingCart != null)
+            {
+                var shoppingCartDomainEntity = _mapper.Map<Models.ShoppingCart>(completedShoppingCart);
+                var allItems = await _itemService.GetAllItems();
+                foreach (var item in allItems)
+                {
+                    if(item.IdShoppingCart == shoppingCartDomainEntity.Id)
+                    {
+                        filteredItems.Add(item);
+                    }
+                }
+            }
+
+            return filteredItems;
         }
 
     }
