@@ -10,6 +10,7 @@ export interface Product {
 
 export interface Item {
     id: number;
+    name: string;
     idProduct: number;
     quantity: number;
     isDeleted: boolean;
