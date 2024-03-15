@@ -8,11 +8,19 @@ export interface Product {
     image?: string;
 }
 
-export interface ProductProps {
-    allProducts: Product[];
-    setAllProducts: React.Dispatch<React.SetStateAction<Product[]>>;
-    countProducts: number;
-    setCountProducts: React.Dispatch<React.SetStateAction<number>>;
-    total: number;
-    setTotal: React.Dispatch<React.SetStateAction<number>>;
+export interface Item {
+    id: number;
+    name: string;
+    idProduct: number;
+    quantity: number;
+    isDeleted: boolean;
+    totalPrice: number;
 }
+
+export interface ShoppingCart {
+    items: Item[];
+    countProducts: number;
+    total: number;
+}
+
+export type Operation = "decrease" | "increase";

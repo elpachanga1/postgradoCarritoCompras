@@ -1,31 +1,24 @@
 import { useState } from 'react';
 import { Header } from './components/Header';
 import { ProductList } from './components/ProductList';
-import { Product } from './entities/Interfaces';
+import { ShoppingCart } from './entities/Interfaces';
 
 function App() {
-  const voidProduct: Product[] = [];
-	const [allProducts, setAllProducts] = useState(voidProduct);
-	const [total, setTotal] = useState(0);
-	const [countProducts, setCountProducts] = useState(0);
+	const voidShoppingCart: ShoppingCart = {
+		items: [],
+		countProducts: 0,
+		total: 0,
+	};
+	const [shoppingCart, setShoppingCart] = useState(voidShoppingCart);
 
 	return (
 		<>
 			<Header
-				allProducts={allProducts}
-				setAllProducts={setAllProducts}
-				total={total}
-				setTotal={setTotal}
-				countProducts={countProducts}
-				setCountProducts={setCountProducts}
+				shoppingCart={shoppingCart}
+				setShoppingCart={setShoppingCart}
 			/>
 			<ProductList
-				allProducts={allProducts}
-				setAllProducts={setAllProducts}
-				total={total}
-				setTotal={setTotal}
-				countProducts={countProducts}
-				setCountProducts={setCountProducts}
+				setShoppingCart={setShoppingCart}
 			/>
 		</>
 	);
