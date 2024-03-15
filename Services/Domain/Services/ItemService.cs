@@ -9,8 +9,7 @@ namespace Services.Domain.Services
         private readonly IMapper _mapper;
         private IRepository<DataRepository.Models.Item> _itemRepository;
         private readonly ProductService _productService;
-        private readonly PriceCalculatorHandler _priceCalculatorHandler;
-
+        
         public ItemService(IMapper mapper, IRepository<DataRepository.Models.Item> itemRepository, ProductService productService)
         {
             _mapper = mapper;

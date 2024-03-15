@@ -1,6 +1,6 @@
 ﻿
 **Instalar la versión de entity framework para .NET Framework 6
-dotnet tool install --global dotnet-ef --version 7.0.7
+dotnet tool install --global dotnet-ef --version 8.0.2
 **Validar la instalación
 dotnet ef --8.0.2
 

@@ -26,7 +26,7 @@ public class PriceCalculatorHandler
     }
 
 
-    public IRulesForPrice GetPricingRule(string sku)
+    private IRulesForPrice GetPricingRule(string sku)
     {
         if (sku.StartsWith("EA"))
         {
