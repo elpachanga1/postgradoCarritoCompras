@@ -22,3 +22,5 @@ export interface ShoppingCart {
     countProducts: number;
     total: number;
 }
+
+export type Operation = "decrease" | "increase";

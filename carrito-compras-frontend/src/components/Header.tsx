@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { Item, ShoppingCart } from "../entities/Interfaces";
+import { Item, Operation, ShoppingCart } from "../entities/Interfaces";
 import * as CartService from "../services/CartService";
 import * as ShoppingCartUtils from "../utils/ShoppingCartUtils";
-import { Counter, Operation } from "./Counter";
+import { Counter } from "./Counter";
 
 export const Header = ({ shoppingCart, setShoppingCart }: any) => {
   const [active, setActive] = useState(false);
@@ -68,15 +68,17 @@ export const Header = ({ shoppingCart, setShoppingCart }: any) => {
       });
     });
   };
-  const handleRemoveProduct = async (productId: number) => {
-	await CartService.DeleteProductFromShoppingCart(productId);
-    const shoppingCart: ShoppingCart =
-      await ShoppingCartUtils.getShoppingCart();
+
+  const handleRemoveItem = async (itemId: number) => {
+    await CartService.DeleteProductFromShoppingCart(itemId);
+    const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart();
     setShoppingCart(shoppingCart);
   }
 
-  const handleUpdateQuantity = (productId: number, operation: Operation) => {
-   //Logica para actualizar la cantidad
+  const handleUpdateQuantity = async (productId: number, operation: Operation) => {
+    await CartService.addProductToShoppingCart(productId, operation);
+		const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart();
+		setShoppingCart(shoppingCart);
   }
 
   return (
@@ -113,9 +115,6 @@ export const Header = ({ shoppingCart, setShoppingCart }: any) => {
                 {shoppingCart.items.map((item: Item) => (
                   <div className="cart-product" key={item.id}>
                     <div className="info-cart-product">
-                      {/* <span className="cantidad-producto-carrito">
-                        {item.quantity}
-                      </span> */}
                       <p className="titulo-producto-carrito">
                         {item.idProduct}
                       </p>
@@ -123,12 +122,10 @@ export const Header = ({ shoppingCart, setShoppingCart }: any) => {
                         ${item.totalPrice}
                       </span>
                       <Counter
-                        removeProductCallback={() =>
-                          handleRemoveProduct(item.id)
-                        }
-                        productId={item.id}
+                        removeProductCallback={() => handleRemoveItem(item.id) }
+                        productId={item.idProduct}
                         handleUpdateQuantity={handleUpdateQuantity}
-						quantity={item.quantity}
+						            quantity={item.quantity}
                       />
                     </div>
                     <svg

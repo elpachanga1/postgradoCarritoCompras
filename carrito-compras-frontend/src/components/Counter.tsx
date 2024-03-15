@@ -1,16 +1,16 @@
 import { FunctionComponent, useState } from "react";
+import { Operation } from "../entities/Interfaces";
 interface Props {
   removeProductCallback: (productId: number) => void;
   handleUpdateQuantity: (productId: number, operation: Operation) => void;
   productId: number;
   quantity: number;
 }
-export type Operation = "decrease" | "increase";
 export const Counter: FunctionComponent<Props> = ({
   removeProductCallback,
   handleUpdateQuantity,
   productId,
-  quantity=1
+  quantity
 }) => {
   const [value, setValue] = useState<number>(quantity);
 
