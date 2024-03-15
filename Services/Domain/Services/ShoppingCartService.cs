@@ -37,8 +37,9 @@ namespace Services.Domain.Services
 
             var shoppingCartsDataEntity = await _shoppingCartRepository.GetAllAsync();
 
-            var shoppingCart = shoppingCartsDataEntity
-      .FirstOrDefault(dataShoppingCart => dataShoppingCart.IdUser == IdUser && dataShoppingCart.IsCompleted == false);
+            var shoppingCart = shoppingCartsDataEntity.FirstOrDefault(
+                dataShoppingCart => dataShoppingCart.IdUser == IdUser && dataShoppingCart.IsCompleted == false
+            );
 
             if (shoppingCart != null)
             {

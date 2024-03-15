@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Services.Domain.Services;
 using ShoppingCartBackEnd.Entities.Models.InputModels;
 
@@ -161,6 +159,21 @@ namespace CarritoComprasBackend.Controllers
             {
                 result = await _storeService.CompleteshoppingCart(IdUser);
                 return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+
+        [HttpPost("/User/AuthenticateUser", Name = "AuthenticateUser")]
+        public async Task<IActionResult> AuthenticateUser(string username, string password)
+        {
+            try
+            {
+                var result = await _storeService.AuthenticateUser(username, password);
+                return Ok(result);
             }
             catch (Exception ex)
             {
