@@ -35,7 +35,11 @@ namespace Services.Domain.Services
         {
             bool result = false;
 
-            Models.ShoppingCart shoppingCart = await GetShoppingCart(IdUser, false);
+            var shoppingCartsDataEntity = await _shoppingCartRepository.GetAllAsync();
+
+            var shoppingCart = shoppingCartsDataEntity
+      .FirstOrDefault(dataShoppingCart => dataShoppingCart.IdUser == IdUser && dataShoppingCart.IsCompleted == false);
+
             if (shoppingCart != null)
             {
                 shoppingCart.FinishDate = DateTime.UtcNow;

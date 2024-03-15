@@ -25,15 +25,15 @@ namespace Services.Domain.Services
             
             if (itemDataEntity != null) 
             { 
-                itemDataEntity.IsDeleted = true;
-                _itemRepository.Update(itemDataEntity);
+                /*itemDataEntity.IsDeleted = true;
+                _itemRepository.Update(itemDataEntity);*/
+                _itemRepository.Remove(itemDataEntity);
                 await _itemRepository.SaveAsync();
                 result = true;
             }
             return result;
         }
 
-        // empty shopping cart
         public async Task<bool> DeleteItems()
         {
             bool result = false;
@@ -41,9 +41,7 @@ namespace Services.Domain.Services
             var itemDataEntity = await _itemRepository.GetAllAsync();
             foreach (var item in itemDataEntity)
             {
-                item.IsDeleted = true;
-                _itemRepository.Update(item);
-                result = true;
+                _itemRepository.Remove(item);
             }
             await _itemRepository.SaveAsync();
             return result;
@@ -95,13 +93,17 @@ namespace Services.Domain.Services
         public async Task<List<Models.Item>> GetItemsByProductId(int ProductId)
         {
             List<Models.Item> itemDomainEntity = new List<Models.Item>();
-
+            
             var itemDataEntity = await _itemRepository.GetAllAsync();
             var items = itemDataEntity.Where(item => item.IdProduct == ProductId);
 
+            var productReferenceDataEntity = await _productService.GetProductById(ProductId);
             foreach (var dataProduct in items)
             {
-                itemDomainEntity.Add(_mapper.Map<Models.Item>(dataProduct));
+                Models.Item itemProduct = _mapper.Map<Models.Item>(dataProduct);
+                Models.Product productReference = _mapper.Map<Models.Product>(productReferenceDataEntity);
+                itemProduct.ProductReference = productReference;
+                itemDomainEntity.Add(itemProduct);
             }
             return itemDomainEntity;
         }
@@ -112,12 +114,17 @@ namespace Services.Domain.Services
 
             var itemDataEntity = await _itemRepository.GetAllAsync();
             var items = itemDataEntity.Where(item => !item.IsDeleted);
+            
 
             if (items != null)
             {
                 foreach (var dataProduct in items)
                 {
-                    itemDomainEntity.Add(_mapper.Map<Models.Item>(dataProduct));
+                    var productReferenceDataEntity = await _productService.GetProductById(dataProduct.IdProduct);
+                    Models.Product productReference = _mapper.Map<Models.Product>(productReferenceDataEntity);
+                    Models.Item itemProduct = _mapper.Map<Models.Item>(dataProduct);
+                    itemProduct.ProductReference = productReference;
+                    itemDomainEntity.Add(itemProduct);
                 }
             }
             

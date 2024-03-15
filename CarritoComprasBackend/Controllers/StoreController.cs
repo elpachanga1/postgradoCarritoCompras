@@ -73,6 +73,39 @@ namespace CarritoComprasBackend.Controllers
         }
 
 
+        [HttpGet("/Item/GetItemsByProductId/{ProductId}", Name = "GetItemsByProductId")]
+        public async Task<IActionResult> GetItemsByProductId(int ProductId)
+        {
+            try
+            {
+                var item = await _storeService.GetItemsByProductId(ProductId);
+                if (item == null)
+                {
+                    return NotFound();
+                }
+                return Ok(item);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+        [HttpGet("/Item/GetAllItems", Name = "GetAllItems")]
+        public async Task<IActionResult> GetAllItems()
+        {
+            try
+            {
+                var items = await _storeService.GetAllItems();
+                return Ok(items);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+
         [HttpPost("/Store/AddProductToShoppingCart", Name = "AddProductToShoppingCart")]
         public async Task<IActionResult> AddProductToShoppingCart(string IdUser, int IdProduct, int Quantity)
         {
@@ -135,36 +168,5 @@ namespace CarritoComprasBackend.Controllers
             }
         }
 
-        [HttpGet("/Item/GetItemsByProductId/{ProductId}", Name = "GetItemsByProductId")]
-        public async Task<IActionResult> GetItemsByProductId(int ProductId)
-        {
-            try
-            {
-                var item = await _storeService.GetItemsByProductId(ProductId);
-                if (item == null)
-                {
-                    return NotFound();
-                }
-                return Ok(item);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"An error occurred: {ex.Message}");
-            }
-        }
-
-        [HttpGet("/Item/GetAllItems", Name = "GetAllItems")]
-        public async Task<IActionResult> GetAllItems()
-        {
-            try
-            {
-                var items = await _storeService.GetAllItems();
-                return Ok(items);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"An error occurred: {ex.Message}");
-            }
-        }
     }
 }
