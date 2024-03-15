@@ -112,6 +112,17 @@ namespace Services.Domain.Services
             await _shoppingCartRepository.SaveAsync();            
             
             return true;        
-        }    
+        }
+
+        public async Task<IEnumerable<global::Services.Domain.Models.Item>> GetItemsByProductId(int ProductId)
+        {
+            return await _itemService.GetItemsByProductId(ProductId);
+        }
+
+        public async Task<IEnumerable<global::Services.Domain.Models.Item>> GetAllItems()
+        {
+            return await _itemService.GetAllItems();
+        }
+
     }
 }
