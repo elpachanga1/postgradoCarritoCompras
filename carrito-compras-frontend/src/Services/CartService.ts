@@ -37,3 +37,14 @@ export const DeleteProductFromShoppingCart = async (idItem: number): Promise<any
         return [];
     }
 };
+
+export const CompleteCartTransaction = async (): Promise<any> => {
+    try {
+        const response = await axios.put<any>(`${apiUrl}/Store/CompleteCartTransaction?IdUser=${1}`);
+        console.log(response);
+        return response.data;
+    } catch (error: any) {
+        console.log("Error: ", error.message);
+        return [];
+    }
+};

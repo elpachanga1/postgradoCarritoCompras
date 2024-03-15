@@ -60,7 +60,7 @@ export const Header = ({ shoppingCart, setShoppingCart }: any) => {
   const onPurchase = () => {
     Swal.fire("Purchase", "Purchase Completed", "success").then(async () => {
       // add CompleteShoppingCart request here
-      await CartService.EmptyShoppingCart();
+      await CartService.CompleteCartTransaction();
       setShoppingCart({
         items: [],
         countProducts: 0,
