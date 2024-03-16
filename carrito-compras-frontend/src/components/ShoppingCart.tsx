@@ -10,17 +10,17 @@ export const ShoppingCartMenu = ({ shoppingCart, setShoppingCart }: any) => {
 
     useEffect(() => {
         const fetchItems = async () => {
-        try {
-            const shoppingCart: ShoppingCart =
-            await ShoppingCartUtils.getShoppingCart();
-            setShoppingCart(shoppingCart);
-        } catch (error) {
-            console.error("Error fetching items:", error);
-        }
+            try {
+                const shoppingCart: ShoppingCart =
+                await ShoppingCartUtils.getShoppingCart();
+                setShoppingCart(shoppingCart);
+            } catch (error) {
+                console.error("Error fetching items:", error);
+            }
         };
 
         fetchItems();
-    }, []);
+    }, [setShoppingCart]);
 
     const onDeleteProduct = async (item: Item) => {
         await CartService.DeleteProductFromShoppingCart(item.id);
@@ -119,10 +119,10 @@ export const ShoppingCartMenu = ({ shoppingCart, setShoppingCart }: any) => {
                             ${item.totalPrice}
                             </span>
                             <Counter
-                            removeProductCallback={() => handleRemoveItem(item.id) }
-                            productId={item.idProduct}
-                            handleUpdateQuantity={handleUpdateQuantity}
-                                        quantity={item.quantity}
+                                removeProductCallback={() => handleRemoveItem(item.id) }
+                                productId={item.idProduct}
+                                handleUpdateQuantity={handleUpdateQuantity}
+                                quantity={item.quantity}
                             />
                         </div>
                         <svg

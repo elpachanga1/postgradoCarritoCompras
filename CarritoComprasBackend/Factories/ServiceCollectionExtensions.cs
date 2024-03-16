@@ -8,7 +8,7 @@ namespace ShoppingCartBackEnd.Factories
     {
         public static IServiceCollection AddProductServices(this IServiceCollection services)
         {
-            services.AddTransient<ProductService>(serviceProvider =>
+            services.AddTransient(serviceProvider =>
             {
                 var mapper = serviceProvider.GetRequiredService<IMapper>();
                 var productRepository = serviceProvider.GetRequiredService<IRepository<DataRepository.Models.Product>>();
@@ -19,7 +19,7 @@ namespace ShoppingCartBackEnd.Factories
 
         public static IServiceCollection AddShoppingCartServices(this IServiceCollection services)
         {
-            services.AddTransient<ShoppingCartService>(serviceProvider =>
+            services.AddTransient(serviceProvider =>
             {
                 var mapper = serviceProvider.GetRequiredService<IMapper>();
                 var shoppingCartRepository = serviceProvider.GetRequiredService<IRepository<DataRepository.Models.ShoppingCart>>();
@@ -38,18 +38,20 @@ namespace ShoppingCartBackEnd.Factories
 
         public static IServiceCollection AddUserServices(this IServiceCollection services)
         {
-            services.AddTransient<UserService>(serviceProvider =>
+            services.AddTransient(serviceProvider =>
             {
                 var mapper = serviceProvider.GetRequiredService<IMapper>();
                 var shoppingCartService = serviceProvider.GetRequiredService<ShoppingCartService>();
-                return new UserService(mapper, shoppingCartService);
+                var sessionService = serviceProvider.GetRequiredService<SessionService>();
+                var userRepository = serviceProvider.GetRequiredService<IRepository<DataRepository.Models.User>>();
+                return new UserService(mapper, shoppingCartService, sessionService, userRepository);
             });
             return services;
         }
 
         public static IServiceCollection AddItemServices(this IServiceCollection services)
         {
-            services.AddTransient<ItemService>(serviceProvider =>
+            services.AddTransient(serviceProvider =>
             {
                 var mapper = serviceProvider.GetRequiredService<IMapper>();
                 var itemRepository = serviceProvider.GetRequiredService<IRepository<DataRepository.Models.Item>>();
@@ -59,5 +61,15 @@ namespace ShoppingCartBackEnd.Factories
             return services;
         }
 
+        public static IServiceCollection AddSessionServices(this IServiceCollection services)
+        {
+            services.AddTransient(serviceProvider =>
+            {
+                var mapper = serviceProvider.GetRequiredService<IMapper>();
+                var sessionRepository = serviceProvider.GetRequiredService<IRepository<DataRepository.Models.Session>>();
+                return new SessionService(mapper, sessionRepository);
+            });
+            return services;
+        }
     }
 }
