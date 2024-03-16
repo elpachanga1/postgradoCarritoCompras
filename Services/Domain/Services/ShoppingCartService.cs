@@ -127,7 +127,7 @@ namespace Services.Domain.Services
             return shoppingCartDataEntity.Id;        
         }
 
-        public async Task<IEnumerable<global::Services.Domain.Models.Item>> GetItemsByProductId(int ProductId)
+        public async Task<IEnumerable<Domain.Models.Item>> GetItemsByProductId(int ProductId)
         {
             List<Models.Item> filteredItems = new List<Models.Item>();
             var shoppingCartsDataEntity = await _shoppingCartRepository.GetAllAsync();
@@ -143,7 +143,7 @@ namespace Services.Domain.Services
             return filteredItems;
         }
 
-        public async Task<IEnumerable<global::Services.Domain.Models.Item>> GetAllItems()
+        public async Task<IEnumerable<Domain.Models.Item>> GetAllItems()
         {
             List<Models.Item> filteredItems = new List<Models.Item>();
             
@@ -166,6 +166,29 @@ namespace Services.Domain.Services
 
             return filteredItems;
         }
+
+        public async Task<float> GetTotalSales()
+        {
+            float totalSales = 0;
+            var shoppingCartsDataEntity = await _shoppingCartRepository.GetAllAsync();
+            var completedShoppingCarts = shoppingCartsDataEntity
+    .Where(dataShoppingCart => dataShoppingCart.IsCompleted == true)
+    .OrderBy(dataShoppingCart => dataShoppingCart.Id)
+    .ToList();
+
+            if (completedShoppingCarts.Count > 0)
+            {
+                var ItemsEntity = await _itemService.GetAllItems();
+                foreach ( var car in completedShoppingCarts)
+                {
+                    var shoppingCartDomainEntity = _mapper.Map<Models.ShoppingCart>(car);
+                    shoppingCartDomainEntity.items = ItemsEntity.Where(item => item.IdShoppingCart == shoppingCartDomainEntity.Id).ToList();
+                    totalSales = totalSales + shoppingCartDomainEntity.CalculateTotal();
+                }
+            }
+            return totalSales;
+        }
+
 
     }
 }

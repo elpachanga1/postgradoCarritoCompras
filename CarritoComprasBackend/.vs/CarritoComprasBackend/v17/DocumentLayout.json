@@ -6,7 +6,13 @@
       "AbsoluteMoniker": "D:0:0:{249B8C4F-E4A6-421E-A694-84F2B7E8CE88}|..\\Services\\Services.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\services\\domain\\services\\shoppingcartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{249B8C4F-E4A6-421E-A694-84F2B7E8CE88}|..\\Services\\Services.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\services\\domain\\models\\shoppingcart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{249B8C4F-E4A6-421E-A694-84F2B7E8CE88}|..\\Services\\Services.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\services\\domain\\services\\itemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{249B8C4F-E4A6-421E-A694-84F2B7E8CE88}|..\\Services\\Services.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\services\\domain\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{249B8C4F-E4A6-421E-A694-84F2B7E8CE88}|..\\Services\\Services.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\services\\domain\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -19,6 +25,10 @@
       "RelativeMoniker": "D:0:0:{42A8A370-F99E-4313-8C10-8E0B52F4E984}|ShoppingCartBackEnd.csproj|solutionrelative:controllers\\storecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{42A8A370-F99E-4313-8C10-8E0B52F4E984}|ShoppingCartBackEnd.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\carritocomprasbackend\\resources\\commands.txt||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{42A8A370-F99E-4313-8C10-8E0B52F4E984}|ShoppingCartBackEnd.csproj|solutionrelative:resources\\commands.txt||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6564FC22-3402-42DB-9560-FB20EAA23876}|..\\BusinessRules\\BusinessRules.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\businessrules\\rulesforprice\\handlers\\pricecalculatorhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -29,69 +39,95 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "ShoppingCart.cs",
+              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Services\\Domain\\Models\\ShoppingCart.cs",
+              "RelativeDocumentMoniker": "..\\Services\\Domain\\Models\\ShoppingCart.cs",
+              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Services\\Domain\\Models\\ShoppingCart.cs",
+              "RelativeToolTip": "..\\Services\\Domain\\Models\\ShoppingCart.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-16T00:00:00.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "StoreController.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\CarritoComprasBackend\\Controllers\\StoreController.cs",
               "RelativeDocumentMoniker": "Controllers\\StoreController.cs",
               "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\CarritoComprasBackend\\Controllers\\StoreController.cs",
               "RelativeToolTip": "Controllers\\StoreController.cs",
-              "ViewState": "AQIAAFAAAAAAAAAAAAAiwGIAAAA0AAAA",
+              "ViewState": "AQIAAJoAAAAAAAAAAAAYwKoAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-15T22:31:15.499Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "StoreService.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Services\\Domain\\Services\\StoreService.cs",
               "RelativeDocumentMoniker": "..\\Services\\Domain\\Services\\StoreService.cs",
               "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Services\\Domain\\Services\\StoreService.cs",
               "RelativeToolTip": "..\\Services\\Domain\\Services\\StoreService.cs",
-              "ViewState": "AQIAADIAAAAAAAAAAAAqwEMAAAAqAAAA",
+              "ViewState": "AQIAACIAAAAAAAAAAAAowEkAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-15T22:31:15.512Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
+              "Title": "commands.txt",
+              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\CarritoComprasBackend\\Resources\\commands.txt",
+              "RelativeDocumentMoniker": "Resources\\commands.txt",
+              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\CarritoComprasBackend\\Resources\\commands.txt",
+              "RelativeToolTip": "Resources\\commands.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAABSAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-03-15T22:31:15.526Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "UserService.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Services\\Domain\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "..\\Services\\Domain\\Services\\UserService.cs",
               "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Services\\Domain\\Services\\UserService.cs",
               "RelativeToolTip": "..\\Services\\Domain\\Services\\UserService.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAqwDYAAAAzAAAA",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAADYAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-15T22:31:15.545Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "PriceCalculatorHandler.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\BusinessRules\\RulesForPrice\\Handlers\\PriceCalculatorHandler.cs",
               "RelativeDocumentMoniker": "..\\BusinessRules\\RulesForPrice\\Handlers\\PriceCalculatorHandler.cs",
               "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\BusinessRules\\RulesForPrice\\Handlers\\PriceCalculatorHandler.cs",
               "RelativeToolTip": "..\\BusinessRules\\RulesForPrice\\Handlers\\PriceCalculatorHandler.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAgwB0AAAAEAAAA",
+              "ViewState": "AQIAABMAAAAAAAAAAAAwwCYAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-15T22:31:15.559Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ItemService.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Services\\Domain\\Services\\ItemService.cs",
               "RelativeDocumentMoniker": "..\\Services\\Domain\\Services\\ItemService.cs",
               "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Services\\Domain\\Services\\ItemService.cs",
               "RelativeToolTip": "..\\Services\\Domain\\Services\\ItemService.cs",
-              "ViewState": "AQIAAE0AAAAAAAAAAAAQwF8AAABJAAAA",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAowHUAAABGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-15T22:27:45.847Z",
               "EditorCaption": ""
@@ -104,9 +140,22 @@
               "RelativeDocumentMoniker": "..\\Services\\Domain\\Services\\ShoppingCartService.cs",
               "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Services\\Domain\\Services\\ShoppingCartService.cs",
               "RelativeToolTip": "..\\Services\\Domain\\Services\\ShoppingCartService.cs",
-              "ViewState": "AQIAAIIAAAAAAAAAAAAQwIsAAAAlAAAA",
+              "ViewState": "AQIAAKIAAAAAAAAAAAAAALwAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-15T22:14:57.816Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Item.cs",
+              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Services\\Domain\\Models\\Item.cs",
+              "RelativeDocumentMoniker": "..\\Services\\Domain\\Models\\Item.cs",
+              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Services\\Domain\\Models\\Item.cs",
+              "RelativeToolTip": "..\\Services\\Domain\\Models\\Item.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-16T00:06:39.479Z",
               "EditorCaption": ""
             }
           ]
