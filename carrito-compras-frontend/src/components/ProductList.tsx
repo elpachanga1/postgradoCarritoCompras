@@ -23,7 +23,7 @@ export const ProductList = ({
 	const [products, setProducts] = useState<Product[]>([]);
 	  
 	const onAddProduct = async (product: Product) => {
-		await CartService.addProductToShoppingCart(product.id, "increase");
+		await CartService.addProductToShoppingCart(product.id, 1);
 		const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart();
 		setShoppingCart(shoppingCart);
 	};

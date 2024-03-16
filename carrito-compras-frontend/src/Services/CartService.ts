@@ -46,7 +46,7 @@ export const UpdateProductFromShoppingCart = async (IdProduct: number, quantity:
     }
 
 };
-export const CompleteCarTransaction = async (): Promise<any> => {
+export const CompleteCartTransaction = async (): Promise<any> => {
     try {
         const response = await axios.post<any>(`${apiUrl}/Store/CompleteCarTransaction?IdUser=${1}}`);
         console.log(response);

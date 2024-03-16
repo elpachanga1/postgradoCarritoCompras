@@ -113,7 +113,6 @@ namespace Services.Domain.Services
         {
             List<Models.Item> itemDomainEntity = new List<Models.Item>();
 
-
             var itemDataEntity = await _itemRepository.GetAllAsync();
             var items = itemDataEntity.Where(item => !item.IsDeleted);
             

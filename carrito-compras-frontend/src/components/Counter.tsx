@@ -36,7 +36,7 @@ export const Counter: FunctionComponent<Props> = ({
   // https://www.svgrepo.com/svg/521942/add-ellipse
   return (
     <div className="counter-container">
-      {value == 1 ? (
+      {value === 1 ? (
         <img
           className="counter-button"
           src={process.env.PUBLIC_URL + "/svg/trash.svg"}
