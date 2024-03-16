@@ -23,3 +23,18 @@ export interface ShoppingCart {
     countProducts: number;
     total: number;
 }
+
+export interface User {
+    id: number;
+    username: string;
+    name: string;
+    password?: string;
+    session: Session;
+}
+
+interface Session {
+    id: number;
+    userId: number;
+    sessionStart: any;
+    sessionEnd: any;
+}

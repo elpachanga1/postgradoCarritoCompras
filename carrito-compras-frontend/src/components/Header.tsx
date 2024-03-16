@@ -1,4 +1,5 @@
 import { ShoppingCartMenu } from './ShoppingCart';
+import { AuthMenu } from './Auth';
 
 export const Header = ({ shoppingCart, setShoppingCart }: any) => {
   return (
@@ -8,6 +9,7 @@ export const Header = ({ shoppingCart, setShoppingCart }: any) => {
 				shoppingCart={shoppingCart}
 				setShoppingCart={setShoppingCart}
       />
+      <AuthMenu />
     </header>
   );
 };
