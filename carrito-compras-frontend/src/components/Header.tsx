@@ -11,9 +11,9 @@ export const Header = ({ shoppingCart, setShoppingCart }: any) => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const shoppingCart: ShoppingCart =
+        const shopping: ShoppingCart =
           await ShoppingCartUtils.getShoppingCart();
-        setShoppingCart(shoppingCart);
+        setShoppingCart(shopping);
       } catch (error) {
         console.error("Error fetching items:", error);
       }
@@ -24,9 +24,9 @@ export const Header = ({ shoppingCart, setShoppingCart }: any) => {
 
   const onDeleteProduct = async (item: Item) => {
     await CartService.DeleteProductFromShoppingCart(item.id);
-    const shoppingCart: ShoppingCart =
+    const shopping: ShoppingCart =
       await ShoppingCartUtils.getShoppingCart();
-    setShoppingCart(shoppingCart);
+    setShoppingCart(shopping);
     Swal.fire(
       "Deleted!",
       `Item ${item.id} has been deleted from the shopping cart.`,
@@ -60,6 +60,7 @@ export const Header = ({ shoppingCart, setShoppingCart }: any) => {
   const onPurchase = () => {
     Swal.fire("Purchase", "Purchase Completed", "success").then(async () => {
       // add CompleteShoppingCart request here
+      await CartService.CompleteCarTransaction();
       await CartService.EmptyShoppingCart();
       setShoppingCart({
         items: [],
@@ -69,15 +70,19 @@ export const Header = ({ shoppingCart, setShoppingCart }: any) => {
     });
   };
   const handleRemoveProduct = async (productId: number) => {
-	await CartService.DeleteProductFromShoppingCart(productId);
-    const shoppingCart: ShoppingCart =
+    await CartService.DeleteProductFromShoppingCart(productId);
+    const shopping: ShoppingCart =
       await ShoppingCartUtils.getShoppingCart();
-    setShoppingCart(shoppingCart);
-  }
+    setShoppingCart(shopping);
+  };
 
-  const handleUpdateQuantity = (productId: number, operation: Operation) => {
-   //Logica para actualizar la cantidad
-  }
+  const handleUpdateQuantity = async (productId: number, quantity: number) => {
+    //Logica para actualizar la cantidad
+    await CartService.UpdateProductFromShoppingCart(productId, quantity);
+    const shopping: ShoppingCart =
+      await ShoppingCartUtils.getShoppingCart();
+    setShoppingCart(shopping);
+  };
 
   return (
     <header>
@@ -110,27 +115,22 @@ export const Header = ({ shoppingCart, setShoppingCart }: any) => {
           {shoppingCart.items.length ? (
             <>
               <div className="row-product">
-                {shoppingCart.items.map((item: Item) => (
+                {shoppingCart.items.sort().map((item: Item) => (
                   <div className="cart-product" key={item.id}>
                     <div className="info-cart-product">
-                      {/* <span className="cantidad-producto-carrito">
-                        {item.quantity}
-                      </span> */}
-                      <p className="titulo-producto-carrito">
-                        {item.idProduct}
-                      </p>
+                      <span className="titulo-producto-carrito">
+                        {item.productReference.name}
+                      </span>
                       <span className="precio-producto-carrito">
                         ${item.totalPrice}
                       </span>
-                      <Counter
-                        removeProductCallback={() =>
-                          handleRemoveProduct(item.id)
-                        }
-                        productId={item.id}
-                        handleUpdateQuantity={handleUpdateQuantity}
-						quantity={item.quantity}
-                      />
                     </div>
+                    <Counter
+                      removeProductCallback={() => handleRemoveProduct(item.id)}
+                      productId={item.idProduct}
+                      handleUpdateQuantity={handleUpdateQuantity}
+                      quantity={item.quantity}
+                    />
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"

@@ -15,6 +15,7 @@ export interface Item {
     quantity: number;
     isDeleted: boolean;
     totalPrice: number;
+    productReference: Product;
 }
 
 export interface ShoppingCart {
