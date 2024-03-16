@@ -74,5 +74,11 @@ namespace Services.Domain.Services
             store.TotalSales = await _userService.GetTotalSales();
             return store.TotalSales;
         }
+
+        public async Task<float> GetTotalActiveCart(string IdUser)
+        {
+            return await _userService.GetTotalActiveCart(IdUser);            
+        }
+
     }
 }

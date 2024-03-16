@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Services.Domain.Services;
 using ShoppingCartBackEnd.Entities.Models.InputModels;
+using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace CarritoComprasBackend.Controllers
 {
@@ -182,5 +183,20 @@ namespace CarritoComprasBackend.Controllers
             }
         }
 
+
+        //[HttpGet("/Store/GetTotalActiveCart", Name = "GetTotalActiveCart")]
+        /*public async Task<IActionResult> GetTotalActiveCart(string IdUser)
+        {
+            
+            try
+            {
+                var TotalSales = await _storeService.GetTotalActiveCart(IdUser);
+                return Ok(TotalSales);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }*/
     }
 }

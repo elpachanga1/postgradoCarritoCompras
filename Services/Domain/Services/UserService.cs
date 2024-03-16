@@ -59,5 +59,12 @@ namespace Services.Domain.Services
         {
             return await _shoppingCartService.GetTotalSales();
         }
+
+        public async Task<float> GetTotalActiveCart(string IdUser)
+        {
+            float result = 0;
+            result = await _shoppingCartService.GetTotalActiveCart(IdUser);
+            return result;
+        }
     }
 }
