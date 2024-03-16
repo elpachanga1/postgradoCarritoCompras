@@ -70,5 +70,19 @@ namespace Services.Domain.Services
         #endregion
 
 
+        public async Task<IEnumerable<global::Services.Domain.Models.Item>> GetItemsByProductId(int ProductId)
+        {
+            return await _shoppingCartService.GetItemsByProductId(ProductId);
+        }
+
+        public async Task<IEnumerable<global::Services.Domain.Models.Item>> GetAllItems()
+        {
+            return await _shoppingCartService.GetAllItems();
+        }
+
+        public async Task<float> GetTotalSales()
+        {
+            return await _shoppingCartService.GetTotalSales();
+        }
     }
 }

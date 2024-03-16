@@ -4,16 +4,14 @@
     {
         private readonly ProductService _productService;
         private readonly UserService _userService;
-        private readonly ItemService _itemService;
-
+        
         public StoreService(
             ProductService productService,
             UserService userService,
             ItemService itemService
         ) {
             _productService = productService;
-            _userService = userService;
-            _itemService = itemService;
+            _userService = userService;            
         }
 
         public async Task<IEnumerable<Models.Product>> GetAllProducts()
@@ -55,14 +53,21 @@
             return result;
         }
 
-        public async Task<IEnumerable<Models.Item>> GetItemsByProductId(int ProductId)
+        public async Task<IEnumerable<Domain.Models.Item>> GetItemsByProductId(int ProductId)
         {
-            return await _itemService.GetItemsByProductId(ProductId);
+            return await _userService.GetItemsByProductId(ProductId);
         }
 
-        public async Task<IEnumerable<Models.Item>> GetAllItems()
+        public async Task<IEnumerable<Domain.Models.Item>> GetAllItems()
         {
-            return await _itemService.GetAllItems();
+            return await _userService.GetAllItems();            
+        }
+
+        public async Task<float> GetTotalSales()
+        {
+            Domain.Models.Store store = new Models.Store();
+            store.TotalSales = await _userService.GetTotalSales();
+            return store.TotalSales;
         }
 
         public async Task<Models.User?> AuthenticateUser(string username, string password)

@@ -15,6 +15,7 @@ export interface Item {
     quantity: number;
     isDeleted: boolean;
     totalPrice: number;
+    productReference: Product;
 }
 
 export interface ShoppingCart {
@@ -22,5 +23,3 @@ export interface ShoppingCart {
     countProducts: number;
     total: number;
 }
-
-export type Operation = "decrease" | "increase";

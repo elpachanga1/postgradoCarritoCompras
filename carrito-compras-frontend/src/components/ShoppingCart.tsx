@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { Item, Operation, ShoppingCart } from "../entities/Interfaces";
+import { Item, ShoppingCart } from "../entities/Interfaces";
 import * as CartService from "../services/CartService";
 import * as ShoppingCartUtils from "../utils/ShoppingCartUtils";
 import { Counter } from "./Counter";
@@ -11,8 +11,7 @@ export const ShoppingCartMenu = ({ shoppingCart, setShoppingCart }: any) => {
     useEffect(() => {
         const fetchItems = async () => {
             try {
-                const shoppingCart: ShoppingCart =
-                await ShoppingCartUtils.getShoppingCart();
+                const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart();
                 setShoppingCart(shoppingCart);
             } catch (error) {
                 console.error("Error fetching items:", error);
@@ -24,8 +23,7 @@ export const ShoppingCartMenu = ({ shoppingCart, setShoppingCart }: any) => {
 
     const onDeleteProduct = async (item: Item) => {
         await CartService.DeleteProductFromShoppingCart(item.id);
-        const shoppingCart: ShoppingCart =
-          await ShoppingCartUtils.getShoppingCart();
+        const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart();
         setShoppingCart(shoppingCart);
         Swal.fire(
           "Deleted!",
@@ -45,14 +43,14 @@ export const ShoppingCartMenu = ({ shoppingCart, setShoppingCart }: any) => {
             confirmButtonText: "Yes, delete it!",
         }).then(async (result) => {
             if (result.isConfirmed) {
-            await CartService.EmptyShoppingCart();
-            setShoppingCart({
-                items: [],
-                countProducts: 0,
-                total: 0,
-            });
+                await CartService.EmptyShoppingCart();
+                setShoppingCart({
+                    items: [],
+                    countProducts: 0,
+                    total: 0,
+                });
 
-            Swal.fire("Deleted!", "Shopping Cart Empty", "success");
+                Swal.fire("Deleted!", "Shopping Cart Empty", "success");
             }
         });
     };
@@ -62,9 +60,9 @@ export const ShoppingCartMenu = ({ shoppingCart, setShoppingCart }: any) => {
             // add CompleteShoppingCart request here
             await CartService.CompleteCartTransaction();
             setShoppingCart({
-            items: [],
-            countProducts: 0,
-            total: 0,
+                items: [],
+                countProducts: 0,
+                total: 0,
             });
         });
     };
@@ -75,8 +73,8 @@ export const ShoppingCartMenu = ({ shoppingCart, setShoppingCart }: any) => {
         setShoppingCart(shoppingCart);
     }
 
-    const handleUpdateQuantity = async (productId: number, operation: Operation) => {
-        await CartService.addProductToShoppingCart(productId, operation);
+    const handleUpdateQuantity = async (productId: number, quantity: number) => {
+        await CartService.addProductToShoppingCart(productId, quantity);
         const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart();
         setShoppingCart(shoppingCart);
     }
