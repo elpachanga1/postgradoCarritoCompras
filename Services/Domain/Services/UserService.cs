@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DataRepository.Repositories;
-using Services.Domain.Utils;
+using Microsoft.Extensions.Configuration;
+using Services.Domain.Helpers;
 
 namespace Services.Domain.Services
 {
@@ -10,23 +11,30 @@ namespace Services.Domain.Services
         private readonly ShoppingCartService _shoppingCartService;
         private readonly SessionService _sessionService;
         private IRepository<DataRepository.Models.User> _userRepository;
+        private readonly IConfiguration _configuration;
+
+        private AuthenticationHelper _authenticationHelper;
 
         public UserService(
             IMapper mapper,
+            IConfiguration configuration,
             ShoppingCartService shoppingCartService,
             SessionService sessionService,
             IRepository<DataRepository.Models.User> userRepository) 
         {
             _mapper = mapper;
+            _configuration = configuration;
             _shoppingCartService = shoppingCartService;
             _sessionService = sessionService;
             _userRepository = userRepository;
+
+            _authenticationHelper = new AuthenticationHelper(_configuration);
         }
 
         public async Task<Models.User?> AuthenticateUser(string username, string password)
         {
             Models.User? userDomainEntity = null;
-            string encryptedPassword = AuthUtils.Hash(password);
+            string encryptedPassword = _authenticationHelper.Hash(password);
 
             var userDataEntity = (await _userRepository.GetAllAsync())
                 ?.FirstOrDefault(user => user.UserName == username && user.Password == encryptedPassword);
@@ -36,6 +44,7 @@ namespace Services.Domain.Services
                 userDomainEntity = _mapper.Map<Models.User>(userDataEntity);
                 userDomainEntity.Password = string.Empty;
                 Models.Session? session = await _sessionService.AddSession(userDomainEntity);
+                session.Token = _authenticationHelper.GenerateJWTToken(userDataEntity);
                 userDomainEntity.SessionReference = session;
             }
             return userDomainEntity;

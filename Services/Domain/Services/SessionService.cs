@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DataRepository.Repositories;
+using Microsoft.Extensions.Configuration;
 
 namespace Services.Domain.Services
 {
@@ -7,13 +8,18 @@ namespace Services.Domain.Services
     {
         private readonly IMapper _mapper;
         private IRepository<DataRepository.Models.Session> _sessionRepository;
+        private readonly IConfiguration _config;
+        private readonly int authActivityTime;
 
         public SessionService(
             IMapper mapper,
+            IConfiguration configuration,
             IRepository<DataRepository.Models.Session> sessionRepository)
         {
             _mapper = mapper;
+            _config = configuration;
             _sessionRepository = sessionRepository;
+            authActivityTime = int.Parse(_config["auth:authActivityTime"]);
         }
 
         public async Task<Models.Session> AddSession(Models.User user)
@@ -22,7 +28,7 @@ namespace Services.Domain.Services
             {
                 UserId = user.Id,
                 SessionStart = DateTime.Now,
-                SessionEnd = DateTime.Now.AddMinutes(5),
+                SessionEnd = DateTime.Now.AddMinutes(authActivityTime),
             };
 
             DataRepository.Models.Session sessionDataEntity = _mapper.Map<DataRepository.Models.Session>(sessionDomainEntity);

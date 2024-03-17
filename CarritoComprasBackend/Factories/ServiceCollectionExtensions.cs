@@ -44,7 +44,8 @@ namespace ShoppingCartBackEnd.Factories
                 var shoppingCartService = serviceProvider.GetRequiredService<ShoppingCartService>();
                 var sessionService = serviceProvider.GetRequiredService<SessionService>();
                 var userRepository = serviceProvider.GetRequiredService<IRepository<DataRepository.Models.User>>();
-                return new UserService(mapper, shoppingCartService, sessionService, userRepository);
+                var configuration = serviceProvider.GetRequiredService<IConfiguration>();
+                return new UserService(mapper, configuration, shoppingCartService, sessionService, userRepository);
             });
             return services;
         }
@@ -67,7 +68,8 @@ namespace ShoppingCartBackEnd.Factories
             {
                 var mapper = serviceProvider.GetRequiredService<IMapper>();
                 var sessionRepository = serviceProvider.GetRequiredService<IRepository<DataRepository.Models.Session>>();
-                return new SessionService(mapper, sessionRepository);
+                var configuration = serviceProvider.GetRequiredService<IConfiguration>();
+                return new SessionService(mapper, configuration, sessionRepository);
             });
             return services;
         }
