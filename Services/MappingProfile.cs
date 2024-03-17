@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using DataRepository.Models;
-using Services.Domain.Models;
 
 namespace Services
 {

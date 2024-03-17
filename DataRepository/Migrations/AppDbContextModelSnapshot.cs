@@ -83,6 +83,28 @@ namespace DataRepository.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("DataRepository.Models.Session", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("SessionEnd")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("SessionStart")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sessions");
+                });
+
             modelBuilder.Entity("DataRepository.Models.ShoppingCart", b =>
                 {
                     b.Property<int>("Id")
@@ -110,6 +132,31 @@ namespace DataRepository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ShoppingCarts");
+                });
+
+            modelBuilder.Entity("DataRepository.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

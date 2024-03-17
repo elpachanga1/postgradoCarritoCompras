@@ -26,10 +26,11 @@ namespace Services.Domain.Services
         public async Task<Models.User?> AuthenticateUser(string username, string password)
         {
             Models.User? userDomainEntity = null;
-            string encryptedPassword = EncryptPassword.Hash(password);
+            string encryptedPassword = AuthUtils.Hash(password);
 
             var userDataEntity = (await _userRepository.GetAllAsync())
-                ?.Where(user => user.UserName == username && user.Password == encryptedPassword);
+                ?.FirstOrDefault(user => user.UserName == username && user.Password == encryptedPassword);
+            
             if (userDataEntity != null)
             {
                 userDomainEntity = _mapper.Map<Models.User>(userDataEntity);
@@ -70,12 +71,12 @@ namespace Services.Domain.Services
         #endregion
 
 
-        public async Task<IEnumerable<global::Services.Domain.Models.Item>> GetItemsByProductId(int ProductId)
+        public async Task<IEnumerable<Models.Item>> GetItemsByProductId(int ProductId)
         {
             return await _shoppingCartService.GetItemsByProductId(ProductId);
         }
 
-        public async Task<IEnumerable<global::Services.Domain.Models.Item>> GetAllItems()
+        public async Task<IEnumerable<Models.Item>> GetAllItems()
         {
             return await _shoppingCartService.GetAllItems();
         }

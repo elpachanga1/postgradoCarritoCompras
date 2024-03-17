@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataRepository.Models
+﻿namespace DataRepository.Models
 {
     public class ShoppingCart
     {
@@ -14,6 +8,5 @@ namespace DataRepository.Models
         public DateTime UpdatedDate { get; set; }
         public DateTime FinishDate { get; set; }
         public bool IsCompleted { get; set; }
-        List<Item> Items { get; set; }
     }
 }

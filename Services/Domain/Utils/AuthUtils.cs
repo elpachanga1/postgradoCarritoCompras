@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Services.Domain.Utils
 {
-    public class EncryptPassword
+    public class AuthUtils
     {
         public static string Hash(string password)
         {

@@ -1,9 +1,6 @@
-using AutoMapper;
 using DataRepository.Data;
 using DataRepository.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Services.Domain.Services;
 using ShoppingCartBackEnd.Factories;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using DataRepository.Models;
-
-namespace DataRepository.Models
+﻿namespace DataRepository.Models
 {
     public class Product
     {
