@@ -91,6 +91,26 @@ namespace Services.Domain.Services
             return true;
         }
 
+
+        public async Task<bool> UpdateItem(Models.Item businessItem, int Quantity)
+        {
+            Models.Product? productDomainEntity = await _productService.GetProductById(businessItem.IdProduct);
+
+            var currentItem = await _itemRepository.FindByIdAsync(businessItem.Id);
+            if (currentItem != null)
+            {
+                currentItem.Quantity = Quantity;
+                currentItem.TotalPrice = PriceCalculatorHandler.GetInstance().CalculateItemPrice(
+                    productDomainEntity.Sku,
+                    Quantity,
+                    productDomainEntity.UnitPrice);
+
+                await _itemRepository.SaveAsync();
+                
+            }
+            return true;
+        }
+
         public async Task<List<Models.Item>> GetItemsByShoppingCartByProductId(int ShoppingCartId, int ProductId)
         {
             List<Models.Item> itemDomainEntity = new List<Models.Item>();

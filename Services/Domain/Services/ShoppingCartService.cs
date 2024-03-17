@@ -25,15 +25,26 @@ namespace Services.Domain.Services
             Models.ShoppingCart shoppingCart = await GetShoppingCart(IdUser, false);
             if (shoppingCart == null)
             {
+
                 int IdShoppingCart = await CreateShoppingCart(IdUser);
                 shoppingCart = await GetShoppingCartById(IdShoppingCart);
                 result = true;
             }
-            await _itemService.CreateItem(shoppingCart.Id, IdProduct, Quantity);
 
+            var filteredItems = await _itemService.GetItemsByShoppingCartByProductId(shoppingCart.Id, IdProduct);
+            if(filteredItems.Count() == 0) 
+            { 
+                await _itemService.CreateItem(shoppingCart.Id, IdProduct, Quantity);
+            }
+            else if(filteredItems.Count() > 0)
+            {
+                var itemToUpdate = filteredItems.FirstOrDefault();
+                await _itemService.UpdateItem(itemToUpdate, Quantity);
+            } 
             return result;
         }
 
+      
         public async Task<bool> CompleteShoppingCart(string IdUser)
         {
             bool result = false;
@@ -50,7 +61,7 @@ namespace Services.Domain.Services
                 shoppingCart.IsCompleted = true;
                 var entity = _mapper.Map<DataRepository.Models.ShoppingCart>(shoppingCart);
                 _shoppingCartRepository.Update(entity);
-                await _shoppingCartRepository.SaveAsync();                
+                await _shoppingCartRepository.SaveAsync();
             }
 
             return result;
@@ -64,8 +75,9 @@ namespace Services.Domain.Services
             Models.ShoppingCart shoppingCart = await GetShoppingCart(IdUser, false);
             if (shoppingCart != null)
             {
-                result = await _itemService.DeleteItem(IdItem);            }
-            
+                result = await _itemService.DeleteItem(IdItem);
+            }
+
             return result;
         }
 
@@ -106,7 +118,7 @@ namespace Services.Domain.Services
             Models.ShoppingCart shoppingCartDomainEntity = null;
 
             var shoppingCartsDataEntity = await _shoppingCartRepository.FindByIdAsync(Id);
-            
+
             shoppingCartDomainEntity = _mapper.Map<Models.ShoppingCart>(shoppingCartsDataEntity);
             return shoppingCartDomainEntity;
         }
@@ -119,12 +131,12 @@ namespace Services.Domain.Services
             shoppingCartDomainEntity.CreationDate = DateTime.UtcNow;
             shoppingCartDomainEntity.UpdatedDate = shoppingCartDomainEntity.CreationDate;
             shoppingCartDomainEntity.IsCompleted = false;
-            
+
             DataRepository.Models.ShoppingCart shoppingCartDataEntity = _mapper.Map<DataRepository.Models.ShoppingCart>(shoppingCartDomainEntity);
             await _shoppingCartRepository.AddAsync(shoppingCartDataEntity);
-            await _shoppingCartRepository.SaveAsync();            
-            
-            return shoppingCartDataEntity.Id;        
+            await _shoppingCartRepository.SaveAsync();
+
+            return shoppingCartDataEntity.Id;
         }
 
         public async Task<IEnumerable<Domain.Models.Item>> GetItemsByProductId(int ProductId)
@@ -133,12 +145,12 @@ namespace Services.Domain.Services
             var shoppingCartsDataEntity = await _shoppingCartRepository.GetAllAsync();
             var completedShoppingCart = shoppingCartsDataEntity.OrderBy(dataShoppingCart => dataShoppingCart.Id)
      .FirstOrDefault(dataShoppingCart => dataShoppingCart.IsCompleted == false);
-            
+
             if (completedShoppingCart != null)
             {
                 var shoppingCartDomainEntity = _mapper.Map<Models.ShoppingCart>(completedShoppingCart);
                 filteredItems = await _itemService.GetItemsByShoppingCartByProductId(shoppingCartDomainEntity.Id, ProductId);
-            }            
+            }
 
             return filteredItems;
         }
@@ -146,9 +158,9 @@ namespace Services.Domain.Services
         public async Task<IEnumerable<Domain.Models.Item>> GetAllItems()
         {
             List<Models.Item> filteredItems = new List<Models.Item>();
-            
+
             var shoppingCartsDataEntity = await _shoppingCartRepository.GetAllAsync();
-            var completedShoppingCart = shoppingCartsDataEntity.OrderBy(dataShoppingCart => dataShoppingCart.Id) 
+            var completedShoppingCart = shoppingCartsDataEntity.OrderBy(dataShoppingCart => dataShoppingCart.Id)
      .FirstOrDefault(dataShoppingCart => dataShoppingCart.IsCompleted == false);
 
             if (completedShoppingCart != null)
@@ -157,7 +169,7 @@ namespace Services.Domain.Services
                 var allItems = await _itemService.GetAllItems();
                 foreach (var item in allItems)
                 {
-                    if(item.IdShoppingCart == shoppingCartDomainEntity.Id)
+                    if (item.IdShoppingCart == shoppingCartDomainEntity.Id)
                     {
                         filteredItems.Add(item);
                     }
@@ -179,7 +191,7 @@ namespace Services.Domain.Services
             if (completedShoppingCarts.Count > 0)
             {
                 var ItemsEntity = await _itemService.GetAllItems();
-                foreach ( var car in completedShoppingCarts)
+                foreach (var car in completedShoppingCarts)
                 {
                     var shoppingCartDomainEntity = _mapper.Map<Models.ShoppingCart>(car);
                     shoppingCartDomainEntity.items = ItemsEntity.Where(item => item.IdShoppingCart == shoppingCartDomainEntity.Id).ToList();
@@ -189,6 +201,9 @@ namespace Services.Domain.Services
             return totalSales;
         }
 
-
+        public async Task<float> GetTotalActiveCart(string IdUser)
+        {
+            return 0;
+        }
     }
 }
