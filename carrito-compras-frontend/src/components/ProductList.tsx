@@ -3,6 +3,7 @@ import { Product, ShoppingCart } from '../entities/Interfaces';
 import * as CartService from '../services/CartService';
 import * as ProductService from '../services/ProductService';
 import * as ShoppingCartUtils from '../utils/ShoppingCartUtils';
+import { sortBy} from 'lodash';
 
 export const ProductList = ({
 	setShoppingCart,
@@ -30,13 +31,14 @@ export const ProductList = ({
 
 	return (
 		<div className='container-items'>
-			{products.map(product => (
+			{sortBy(products, 'sku').map(product => (
 				<div className='item' key={product.id}>
 					<figure>
 						<img src={product.image} alt={product.name} />
 					</figure>
 					<div className='info-product'>
-						<h2>{product.name}</h2>
+					<h2>{product.sku} - {product.name}</h2>
+					<p>{product.description}</p>
 						<p className='unitPrice'>${product.unitPrice}</p>
 						<button onClick={() => onAddProduct(product)}>
 							Añadir al carrito
