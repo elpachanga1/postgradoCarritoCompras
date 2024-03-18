@@ -5,7 +5,7 @@ using Services.Domain.Services;
 
 namespace ShoppingCartBackEnd.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
