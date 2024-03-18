@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Services.Domain.Services;
 using ShoppingCartBackEnd.Entities.Models.InputModels;
 
 namespace CarritoComprasBackend.Controllers
 {
+    [Authorize]
     [Route("/[controller]")]
     [ApiController]
     public class StoreController : ControllerBase
@@ -70,7 +72,6 @@ namespace CarritoComprasBackend.Controllers
             }
         }
 
-
         [HttpGet("/Item/GetItemsByProductId/{ProductId}", Name = "GetItemsByProductId")]
         public async Task<IActionResult> GetItemsByProductId(int ProductId)
         {
@@ -103,7 +104,6 @@ namespace CarritoComprasBackend.Controllers
             }
         }
 
-
         [HttpPost("/Store/AddProductToShoppingCart", Name = "AddProductToShoppingCart")]
         public async Task<IActionResult> AddProductToShoppingCart(string IdUser, int IdProduct, int Quantity)
         {
@@ -117,7 +117,6 @@ namespace CarritoComprasBackend.Controllers
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
-
 
         [HttpDelete("/Store/DeleteProductFromShoppingCart", Name = "DeleteProductFromShoppingCart")]
         public async Task<IActionResult> DeleteProductFromShoppingCartAsync(string IdUser, int IdItem)
@@ -134,7 +133,6 @@ namespace CarritoComprasBackend.Controllers
             }
         }
 
-
         [HttpDelete("/Store/EmptyShoppingCart", Name = "EmptyShoppingCart")]
         public async Task<IActionResult> EmptyShoppingCartAsync(string IdUser)
         {
@@ -150,7 +148,6 @@ namespace CarritoComprasBackend.Controllers
             }
         }
 
-
         [HttpPut("/Store/CompleteCartTransaction", Name = "CompleteCartTransaction")]
         public async Task<IActionResult> CompleteCartTransaction(string IdUser)
         {
@@ -159,21 +156,6 @@ namespace CarritoComprasBackend.Controllers
             {
                 result = await _storeService.CompleteshoppingCart(IdUser);
                 return Ok();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"An error occurred: {ex.Message}");
-            }
-        }
-
-
-        [HttpPost("/User/AuthenticateUser", Name = "AuthenticateUser")]
-        public async Task<IActionResult> AuthenticateUser(string username, string password)
-        {
-            try
-            {
-                var result = await _storeService.AuthenticateUser(username, password);
-                return Ok(result);
             }
             catch (Exception ex)
             {

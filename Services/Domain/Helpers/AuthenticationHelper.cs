@@ -58,8 +58,6 @@ namespace Services.Domain.Helpers
 
             // Definimos la información del token (expiración, firma, claims)
             var token = new JwtSecurityToken(
-                issuer: "tu_emisor",
-                audience: "tu_audience",
                 claims: claims,
                 expires: DateTime.Now.AddMinutes(authActivityTime),
                 signingCredentials: creds
