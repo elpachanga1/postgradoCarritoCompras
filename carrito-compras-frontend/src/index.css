@@ -86,7 +86,10 @@ header {
 }
 
 .titulo-producto-carrito {
-    font-size: 20px;
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .precio-producto-carrito {

@@ -45,5 +45,26 @@ namespace Services.Domain.Services
             return result;
         }
 
+        public async Task<IEnumerable<global::Services.Domain.Models.Item>> GetItemsByProductId(int ProductId)
+        {
+            return await _shoppingCartService.GetItemsByProductId(ProductId);
+        }
+
+        public async Task<IEnumerable<global::Services.Domain.Models.Item>> GetAllItems()
+        {
+            return await _shoppingCartService.GetAllItems();
+        }
+
+        public async Task<float> GetTotalSales()
+        {
+            return await _shoppingCartService.GetTotalSales();
+        }
+
+        public async Task<float> GetTotalActiveCart(string IdUser)
+        {
+            float result = 0;
+            result = await _shoppingCartService.GetTotalActiveCart(IdUser);
+            return result;
+        }
     }
 }

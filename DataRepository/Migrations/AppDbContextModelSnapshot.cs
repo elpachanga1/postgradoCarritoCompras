@@ -33,6 +33,9 @@ namespace DataRepository.Migrations
                     b.Property<int>("IdProduct")
                         .HasColumnType("integer");
 
+                    b.Property<int>("IdShoppingCart")
+                        .HasColumnType("integer");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 

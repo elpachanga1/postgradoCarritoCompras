@@ -11,9 +11,9 @@ export const Header = ({ shoppingCart, setShoppingCart }: any) => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const shoppingCart: ShoppingCart =
+        const shopping: ShoppingCart =
           await ShoppingCartUtils.getShoppingCart();
-        setShoppingCart(shoppingCart);
+        setShoppingCart(shopping);
       } catch (error) {
         console.error("Error fetching items:", error);
       }
@@ -24,9 +24,9 @@ export const Header = ({ shoppingCart, setShoppingCart }: any) => {
 
   const onDeleteProduct = async (item: Item) => {
     await CartService.DeleteProductFromShoppingCart(item.id);
-    const shoppingCart: ShoppingCart =
+    const shopping: ShoppingCart =
       await ShoppingCartUtils.getShoppingCart();
-    setShoppingCart(shoppingCart);
+    setShoppingCart(shopping);
     Swal.fire(
       "Deleted!",
       `Item ${item.id} has been deleted from the shopping cart.`,
@@ -60,7 +60,8 @@ export const Header = ({ shoppingCart, setShoppingCart }: any) => {
   const onPurchase = () => {
     Swal.fire("Purchase", "Purchase Completed", "success").then(async () => {
       // add CompleteShoppingCart request here
-      await CartService.CompleteCartTransaction();
+      await CartService.CompleteCarTransaction();
+      await CartService.EmptyShoppingCart();
       setShoppingCart({
         items: [],
         countProducts: 0,
@@ -68,18 +69,20 @@ export const Header = ({ shoppingCart, setShoppingCart }: any) => {
       });
     });
   };
+  const handleRemoveProduct = async (productId: number) => {
+    await CartService.DeleteProductFromShoppingCart(productId);
+    const shopping: ShoppingCart =
+      await ShoppingCartUtils.getShoppingCart();
+    setShoppingCart(shopping);
+  };
 
-  const handleRemoveItem = async (itemId: number) => {
-    await CartService.DeleteProductFromShoppingCart(itemId);
-    const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart();
-    setShoppingCart(shoppingCart);
-  }
-
-  const handleUpdateQuantity = async (productId: number, operation: Operation) => {
-    await CartService.addProductToShoppingCart(productId, operation);
-		const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart();
-		setShoppingCart(shoppingCart);
-  }
+  const handleUpdateQuantity = async (productId: number, quantity: number) => {
+    //Logica para actualizar la cantidad
+    await CartService.UpdateProductFromShoppingCart(productId, quantity);
+    const shopping: ShoppingCart =
+      await ShoppingCartUtils.getShoppingCart();
+    setShoppingCart(shopping);
+  };
 
   return (
     <header>
@@ -112,22 +115,22 @@ export const Header = ({ shoppingCart, setShoppingCart }: any) => {
           {shoppingCart.items.length ? (
             <>
               <div className="row-product">
-                {shoppingCart.items.map((item: Item) => (
+                {shoppingCart.items.sort().map((item: Item) => (
                   <div className="cart-product" key={item.id}>
                     <div className="info-cart-product">
-                      <p className="titulo-producto-carrito">
-                        {item.idProduct}
-                      </p>
+                      <span className="titulo-producto-carrito">
+                        {item.productReference.name}
+                      </span>
                       <span className="precio-producto-carrito">
                         ${item.totalPrice}
                       </span>
-                      <Counter
-                        removeProductCallback={() => handleRemoveItem(item.id) }
-                        productId={item.idProduct}
-                        handleUpdateQuantity={handleUpdateQuantity}
-						            quantity={item.quantity}
-                      />
                     </div>
+                    <Counter
+                      removeProductCallback={() => handleRemoveProduct(item.id)}
+                      productId={item.idProduct}
+                      handleUpdateQuantity={handleUpdateQuantity}
+                      quantity={item.quantity}
+                    />
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"

@@ -15,5 +15,15 @@ namespace Services.Domain.Models
         public DateTime FinishDate { get; set; }
         public bool IsCompleted { get; set; }
         public List<Item> items { get; set; }
+
+        public float CalculateTotal()
+        {
+            float total = 0;
+            foreach (var item in items)
+            {
+                total = total + item.TotalPrice;
+            }
+            return total;
+        }
     }
 }

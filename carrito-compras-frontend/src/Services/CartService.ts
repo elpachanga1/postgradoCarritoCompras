@@ -37,10 +37,20 @@ export const DeleteProductFromShoppingCart = async (idItem: number): Promise<any
         return [];
     }
 };
-
-export const CompleteCartTransaction = async (): Promise<any> => {
+export const UpdateProductFromShoppingCart = async (IdProduct: number, quantity: number): Promise<any> => {
     try {
-        const response = await axios.put<any>(`${apiUrl}/Store/CompleteCartTransaction?IdUser=${1}`);
+        const response = await axios.post<any>(`${apiUrl}/Store/AddProductToShoppingCart?IdUser=${1}&IdProduct=${IdProduct}&Quantity=${quantity}`);
+        console.log(response);
+        return response.data;
+    } catch (error: any) {
+        console.log("Error: ", error.message);
+        return [];
+    }
+
+};
+export const CompleteCarTransaction = async (): Promise<any> => {
+    try {
+        const response = await axios.post<any>(`${apiUrl}/Store/CompleteCarTransaction?IdUser=1}`);
         console.log(response);
         return response.data;
     } catch (error: any) {

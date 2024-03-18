@@ -7,8 +7,7 @@ namespace Services.Domain.Services
         private readonly IMapper _mapper;
         private readonly ProductService _productService;
         private readonly UserService _userService;
-        private readonly ItemService _itemService;
-
+        
         public StoreService(
             IMapper mapper,
             ProductService productService,
@@ -17,16 +16,15 @@ namespace Services.Domain.Services
         ) {
             _mapper = mapper;
             _productService = productService;
-            _userService = userService;
-            _itemService = itemService;
+            _userService = userService;            
         }
 
-        public async Task<IEnumerable<global::Services.Domain.Models.Product>> GetAllProducts()
+        public async Task<IEnumerable<Domain.Models.Product>> GetAllProducts()
         {
             return await _productService.GetAllProducts();
         }
 
-        public async Task<global::Services.Domain.Models.Product> GetProductById(int Id)
+        public async Task<Domain.Models.Product> GetProductById(int Id)
         {
             return await _productService.GetProductById(Id);
         }
@@ -60,14 +58,27 @@ namespace Services.Domain.Services
             return result;
         }
 
-        public async Task<IEnumerable<global::Services.Domain.Models.Item>> GetItemsByProductId(int ProductId)
+        public async Task<IEnumerable<Domain.Models.Item>> GetItemsByProductId(int ProductId)
         {
-            return await _itemService.GetItemsByProductId(ProductId);
+            return await _userService.GetItemsByProductId(ProductId);
         }
 
-        public async Task<IEnumerable<global::Services.Domain.Models.Item>> GetAllItems()
+        public async Task<IEnumerable<Domain.Models.Item>> GetAllItems()
         {
-            return await _itemService.GetAllItems();
+            return await _userService.GetAllItems();            
         }
+
+        public async Task<float> GetTotalSales()
+        {
+            Domain.Models.Store store = new Models.Store();
+            store.TotalSales = await _userService.GetTotalSales();
+            return store.TotalSales;
+        }
+
+        public async Task<float> GetTotalActiveCart(string IdUser)
+        {
+            return await _userService.GetTotalActiveCart(IdUser);            
+        }
+
     }
 }
