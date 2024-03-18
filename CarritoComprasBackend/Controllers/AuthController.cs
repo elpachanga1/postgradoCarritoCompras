@@ -25,7 +25,14 @@ namespace ShoppingCartBackEnd.Controllers
             try
             {
                 var result = await _storeService.AuthenticateUser(username, password);
-                return Ok(result);
+                if (result != null)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return StatusCode(404, $"An error occurred: User not found");
+                }
             }
             catch (Exception ex)
             {
