@@ -1,9 +1,11 @@
 ﻿using CarritoComprasBackend.Controllers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Domain.Services;
 
 namespace ShoppingCartBackEnd.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
