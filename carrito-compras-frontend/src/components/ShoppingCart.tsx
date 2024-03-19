@@ -4,14 +4,19 @@ import { Item, ShoppingCart } from "../entities/Interfaces";
 import * as CartService from "../services/CartService";
 import * as ShoppingCartUtils from "../utils/ShoppingCartUtils";
 import { Counter } from "./Counter";
+import { get } from 'lodash'
+import { getToken } from "../utils/tokenUtil";
 
 export const ShoppingCartMenu = ({ shoppingCart, setShoppingCart }: any) => {
     const [active, setActive] = useState(false);
+    const [token, setToken] = useState<string>('');
 
     useEffect(() => {
+        const rawToken = getToken()
+		setToken(rawToken);
         const fetchItems = async () => {
             try {
-                const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart();
+                const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart(rawToken);
                 setShoppingCart(shoppingCart);
             } catch (error) {
                 console.error("Error fetching items:", error);
@@ -22,8 +27,8 @@ export const ShoppingCartMenu = ({ shoppingCart, setShoppingCart }: any) => {
     }, [setShoppingCart]);
 
     const onDeleteProduct = async (item: Item) => {
-        await CartService.DeleteProductFromShoppingCart(item.id);
-        const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart();
+        await CartService.DeleteProductFromShoppingCart(item.id, token);
+        const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart(token);
         setShoppingCart(shoppingCart);
         Swal.fire(
           "Deleted!",
@@ -43,7 +48,7 @@ export const ShoppingCartMenu = ({ shoppingCart, setShoppingCart }: any) => {
             confirmButtonText: "Yes, delete it!",
         }).then(async (result) => {
             if (result.isConfirmed) {
-                await CartService.EmptyShoppingCart();
+                await CartService.EmptyShoppingCart(token);
                 setShoppingCart({
                     items: [],
                     countProducts: 0,
@@ -58,7 +63,7 @@ export const ShoppingCartMenu = ({ shoppingCart, setShoppingCart }: any) => {
     const onPurchase = () => {
         Swal.fire("Purchase", "Purchase Completed", "success").then(async () => {
             // add CompleteShoppingCart request here
-            await CartService.CompleteCartTransaction();
+            await CartService.CompleteCartTransaction(token);
             setShoppingCart({
                 items: [],
                 countProducts: 0,
@@ -68,14 +73,14 @@ export const ShoppingCartMenu = ({ shoppingCart, setShoppingCart }: any) => {
     };
 
     const handleRemoveItem = async (itemId: number) => {
-        await CartService.DeleteProductFromShoppingCart(itemId);
-        const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart();
+        await CartService.DeleteProductFromShoppingCart(itemId, token);
+        const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart(token);
         setShoppingCart(shoppingCart);
     }
 
     const handleUpdateQuantity = async (productId: number, quantity: number) => {
-        await CartService.addProductToShoppingCart(productId, quantity);
-        const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart();
+        await CartService.addProductToShoppingCart(productId, quantity, token);
+        const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart(token);
         setShoppingCart(shoppingCart);
     }
 

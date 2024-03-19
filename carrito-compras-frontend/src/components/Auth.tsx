@@ -1,12 +1,12 @@
 import Swal from "sweetalert2";
 import * as UserService from "../services/UserService";
-import {  useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 export const AuthMenu = () => {
   const navigate = useNavigate();
-  
+
   // Auth function, meter aqui la autenticacion y obtencion del token
-  const getToken = async (e:any) => {
+  const getToken = async (e: any) => {
     e.preventDefault();
     const username = (
       document?.getElementById("userName") as HTMLInputElement | null
@@ -26,8 +26,8 @@ export const AuthMenu = () => {
 
     const currentUser = await UserService.AuthenticateUser(username, password);
     if (currentUser) {
-      localStorage.setItem('userLogged', JSON.stringify(currentUser));
-      navigate('/home');
+      localStorage.setItem("userLogged", JSON.stringify(currentUser));
+      navigate("/home");
     } else {
       Swal.fire("Oops...", "Invalid Credentials", "warning");
     }
@@ -38,10 +38,10 @@ export const AuthMenu = () => {
       <div className="row align-items-center g-lg-5 py-5">
         <div className="col-lg-7 text-center text-lg-start">
           <h1 className="display-4 fw-bold lh-1 text-body-emphasis mb-3">
-            Sistema para hacer ordenes en linea
+            Online ordering system
           </h1>
           <p className="col-lg-10 fs-4">
-           Es necesario iniciar sesion para realizar las verificaciones
+            It is necessary to log in to carry out verifications
           </p>
         </div>
         <div className="col-md-10 mx-auto col-lg-5">

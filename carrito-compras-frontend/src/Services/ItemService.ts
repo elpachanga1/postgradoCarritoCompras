@@ -3,9 +3,10 @@ import { Item } from "../entities/Interfaces";
 
 const apiUrl: string = process.env.REACT_APP_API_URL || "";
 
-export const getItemsByProductId = async (productId: number): Promise<Item[]> => {
+export const getItemsByProductId = async (productId: number, token: string): Promise<Item[]> => {
     try {
-        const response = await axios.get<Item[]>(`${apiUrl}/Product/GetItemsByProductId/${productId}`);
+        const response = await axios.get<Item[]>(`${apiUrl}/Product/GetItemsByProductId/${productId}`,
+        { headers: {Authorization: `Bearer ${token}`}});
         console.log(response);
         return response.data;
     } catch (error: any) {
@@ -14,9 +15,11 @@ export const getItemsByProductId = async (productId: number): Promise<Item[]> =>
     }
 };
 
-export const getItems = async (): Promise<Item[]> => {
+export const getItems = async (token: string): Promise<Item[]> => {
     try {
-        const response = await axios.get<Item[]>(`${apiUrl}/Item/GetAllItems`);
+        
+        const response = await axios.get<Item[]>(`${apiUrl}/Item/GetAllItems`,
+        { headers: {Authorization: `Bearer ${token}`}});
         console.log(response);
         return response.data;
     } catch (error: any) {

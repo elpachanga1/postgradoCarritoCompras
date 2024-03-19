@@ -3,14 +3,21 @@ import { Product, ShoppingCart } from '../entities/Interfaces';
 import * as CartService from '../services/CartService';
 import * as ProductService from '../services/ProductService';
 import * as ShoppingCartUtils from '../utils/ShoppingCartUtils';
+import { get } from 'lodash'
+import { getToken } from '../utils/tokenUtil';
 
 export const ProductList = ({
 	setShoppingCart,
 }: any) => {
+	const [products, setProducts] = useState<Product[]>([]);
+	const [token, setToken] = useState<string>('');
+	
 	useEffect(() => {
+		const rawToken = getToken()
+		setToken(rawToken);
 		const fetchProducts = async () => {
 			try {
-				const products: Product[] = await ProductService.getProducts();
+				const products: Product[] = await ProductService.getProducts(rawToken);
 				setProducts(products);
 			} catch (error) {
 				console.error('Error fetching products:', error);
@@ -20,11 +27,11 @@ export const ProductList = ({
 		fetchProducts();
 	}, []);
 	
-	const [products, setProducts] = useState<Product[]>([]);
+	
 	  
 	const onAddProduct = async (product: Product) => {
-		await CartService.addProductToShoppingCart(product.id, 1);
-		const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart();
+		await CartService.addProductToShoppingCart(product.id, 1, token);
+		const shoppingCart: ShoppingCart = await ShoppingCartUtils.getShoppingCart(token);
 		setShoppingCart(shoppingCart);
 	};
 
