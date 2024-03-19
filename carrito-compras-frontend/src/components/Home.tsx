@@ -20,9 +20,15 @@ function Home() {
         }
     }, [])
 	return (
-		<div className='text-center'>
-			<h1>Now, you can do orders</h1>
-		</div>
+		<>
+			<Header
+				shoppingCart={shoppingCart}
+				setShoppingCart={setShoppingCart}
+			/>
+			<ProductList
+				setShoppingCart={setShoppingCart}
+			/>
+		</>
 	);
 }
 

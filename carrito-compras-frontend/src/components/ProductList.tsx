@@ -3,8 +3,8 @@ import { Product, ShoppingCart } from '../entities/Interfaces';
 import * as CartService from '../services/CartService';
 import * as ProductService from '../services/ProductService';
 import * as ShoppingCartUtils from '../utils/ShoppingCartUtils';
-import { get } from 'lodash'
 import { getToken } from '../utils/tokenUtil';
+import { sortBy } from 'lodash';
 
 export const ProductList = ({
 	setShoppingCart,
@@ -37,7 +37,7 @@ export const ProductList = ({
 
 	return (
 		<div className='container-items'>
-			{products.map(product => (
+			{sortBy(products, 'sku').map(product => (
 				<div className='item' key={product.id}>
 					<figure>
 						<img src={product.image} alt={product.name} />

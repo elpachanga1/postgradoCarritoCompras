@@ -5,7 +5,7 @@ const apiUrl: string = process.env.REACT_APP_API_URL || "";
 
 export const addProductToShoppingCart = async (productId: number, quantity: number, token: string): Promise<any> => {
     try {
-        const response = await axios.post<any>(`${apiUrl}/Store/AddProductToShoppingCart?IdUser=${1}&IdProduct=${productId}&Quantity=${quantity}`,
+        const response = await axios.post<any>(`${apiUrl}/Store/AddProductToShoppingCart?IdUser=${1}&IdProduct=${productId}&Quantity=${quantity}`,{},
         { headers: {Authorization: `Bearer ${token}`}});
         console.log(response);
         return response.data;
@@ -40,7 +40,7 @@ export const DeleteProductFromShoppingCart = async (idItem: number, token: strin
 };
 export const UpdateProductFromShoppingCart = async (IdProduct: number, quantity: number, token: string): Promise<any> => {
     try {
-        const response = await axios.post<any>(`${apiUrl}/Store/AddProductToShoppingCart?IdUser=${1}&IdProduct=${IdProduct}&Quantity=${quantity}`,
+        const response = await axios.post<any>(`${apiUrl}/Store/AddProductToShoppingCart?IdUser=${1}&IdProduct=${IdProduct}&Quantity=${quantity}`,{},
         { headers: {Authorization: `Bearer ${token}`}});
         console.log(response);
         return response.data;
@@ -52,7 +52,7 @@ export const UpdateProductFromShoppingCart = async (IdProduct: number, quantity:
 };
 export const CompleteCartTransaction = async (token: string): Promise<any> => {
     try {
-        const response = await axios.post<any>(`${apiUrl}/Store/CompleteCarTransaction?IdUser=${1}}`,
+        const response = await axios.post<any>(`${apiUrl}/Store/CompleteCarTransaction?IdUser=${1}}`, {},
         { headers: {Authorization: `Bearer ${token}`}});
         console.log(response);
         return response.data;
