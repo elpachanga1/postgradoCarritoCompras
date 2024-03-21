@@ -16,10 +16,12 @@ namespace ValidationFactory
             IHandler dataSanitizationHandler = new DataSanitizationHandler();
             IHandler bruteForceHandler = new BruteForceHandler();
             IHandler responseSpeedHandler = new ResponseSpeedHandler();
+            IHandler finishHandler = new FinishValidationHandler();
 
             authenticationHandler.SetNext(dataSanitizationHandler)
                 .SetNext(bruteForceHandler)
-                .SetNext(responseSpeedHandler);
+                .SetNext(responseSpeedHandler)
+                .SetNext(finishHandler);
 
             return authenticationHandler;
         }

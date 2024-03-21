@@ -28,7 +28,7 @@ namespace Validations.ConcretImplementation
             else
             {
                 request.RecoveryNextHandlerName = "The Process is Finished";
-                
+                InMemoryRequestRepository.Instance.SaveRequest(request);
             }
         }
 

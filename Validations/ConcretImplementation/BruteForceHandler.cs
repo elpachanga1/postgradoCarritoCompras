@@ -10,6 +10,7 @@ namespace Validations.ConcretImplementation
     public class BruteForceHandler : Handler
     {
         public override string HandlerName => "BruteForce";
+
         public override void Handle(Request incomingRequest)
         {
             Request request = InMemoryRequestRepository.Instance.GetRequest(incomingRequest.UserName);
@@ -28,7 +29,7 @@ namespace Validations.ConcretImplementation
             else
             {
                 request.RecoveryNextHandlerName = "The Process is Finished";
-              
+                InMemoryRequestRepository.Instance.SaveRequest(request);
             }
         }
 

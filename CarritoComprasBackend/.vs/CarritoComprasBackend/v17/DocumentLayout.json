@@ -3,7 +3,30 @@
   "WorkspaceRootPath": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\CarritoComprasBackend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{42A8A370-F99E-4313-8C10-8E0B52F4E984}|ShoppingCartBackEnd.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\carritocomprasbackend\\controllers\\storecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42A8A370-F99E-4313-8C10-8E0B52F4E984}|ShoppingCartBackEnd.csproj|solutionrelative:controllers\\storecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42A8A370-F99E-4313-8C10-8E0B52F4E984}|ShoppingCartBackEnd.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\carritocomprasbackend\\controllers\\processcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42A8A370-F99E-4313-8C10-8E0B52F4E984}|ShoppingCartBackEnd.csproj|solutionrelative:controllers\\processcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00240C33-2D43-4611-8163-9FD96548C398}|..\\Validations\\Validations.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\validations\\inmemoryrequestrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF9324EE-30F3-4D9D-AECB-9A26ECCF9166}|..\\ValidationFactory\\ValidationFactory.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\validationfactory\\concretechaincreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF9324EE-30F3-4D9D-AECB-9A26ECCF9166}|..\\ValidationFactory\\ValidationFactory.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\validationfactory\\interface\\icreatorfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{00240C33-2D43-4611-8163-9FD96548C398}|..\\Validations\\Validations.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\validations\\concretimplementation\\responsespeedhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00240C33-2D43-4611-8163-9FD96548C398}|..\\Validations\\Validations.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\validations\\concretimplementation\\authenticationhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00240C33-2D43-4611-8163-9FD96548C398}|..\\Validations\\Validations.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\validations\\concretimplementation\\finishvalidation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00240C33-2D43-4611-8163-9FD96548C398}|..\\Validations\\Validations.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\validations\\concretimplementation\\datasanitizationhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -12,14 +35,7 @@
       "AbsoluteMoniker": "D:0:0:{00240C33-2D43-4611-8163-9FD96548C398}|..\\Validations\\Validations.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\validations\\concretimplementation\\bruteforcehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00240C33-2D43-4611-8163-9FD96548C398}|..\\Validations\\Validations.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\validations\\concretimplementation\\authenticationhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{00240C33-2D43-4611-8163-9FD96548C398}|..\\Validations\\Validations.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\validations\\model\\validationmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42A8A370-F99E-4313-8C10-8E0B52F4E984}|ShoppingCartBackEnd.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\carritocomprasbackend\\controllers\\processcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42A8A370-F99E-4313-8C10-8E0B52F4E984}|ShoppingCartBackEnd.csproj|solutionrelative:controllers\\processcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{249B8C4F-E4A6-421E-A694-84F2B7E8CE88}|..\\Services\\Services.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\services\\domain\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -27,9 +43,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{42A8A370-F99E-4313-8C10-8E0B52F4E984}|ShoppingCartBackEnd.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\carritocomprasbackend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42A8A370-F99E-4313-8C10-8E0B52F4E984}|ShoppingCartBackEnd.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00240C33-2D43-4611-8163-9FD96548C398}|..\\Validations\\Validations.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\validations\\inmemoryrequestrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{249B8C4F-E4A6-421E-A694-84F2B7E8CE88}|..\\Services\\Services.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\services\\domain\\services\\storeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -47,18 +60,8 @@
       "AbsoluteMoniker": "D:0:0:{249B8C4F-E4A6-421E-A694-84F2B7E8CE88}|..\\Services\\Services.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\services\\domain\\services\\itemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42A8A370-F99E-4313-8C10-8E0B52F4E984}|ShoppingCartBackEnd.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\carritocomprasbackend\\controllers\\storecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42A8A370-F99E-4313-8C10-8E0B52F4E984}|ShoppingCartBackEnd.csproj|solutionrelative:controllers\\storecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AF9324EE-30F3-4D9D-AECB-9A26ECCF9166}|..\\ValidationFactory\\ValidationFactory.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\validationfactory\\concretechaincreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{42A8A370-F99E-4313-8C10-8E0B52F4E984}|ShoppingCartBackEnd.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\carritocomprasbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42A8A370-F99E-4313-8C10-8E0B52F4E984}|ShoppingCartBackEnd.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AF9324EE-30F3-4D9D-AECB-9A26ECCF9166}|..\\ValidationFactory\\ValidationFactory.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\validationfactory\\interface\\icreatorfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{02F070DE-FA2A-4E3A-972D-1E63AB3C5B0C}|..\\DataRepository\\DataRepository.csproj|d:\\github\\hennrygb\\postgradocarritocompras\\datarepository\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -99,24 +102,153 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DataSanitizationHandler.cs",
+              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\ConcretImplementation\\DataSanitizationHandler.cs",
+              "RelativeDocumentMoniker": "..\\Validations\\ConcretImplementation\\DataSanitizationHandler.cs",
+              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\ConcretImplementation\\DataSanitizationHandler.cs",
+              "RelativeToolTip": "..\\Validations\\ConcretImplementation\\DataSanitizationHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAABIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-21T00:12:54.522Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ConcreteChainCreator.cs",
+              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\ValidationFactory\\ConcreteChainCreator.cs",
+              "RelativeDocumentMoniker": "..\\ValidationFactory\\ConcreteChainCreator.cs",
+              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\ValidationFactory\\ConcreteChainCreator.cs",
+              "RelativeToolTip": "..\\ValidationFactory\\ConcreteChainCreator.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABcAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-21T00:57:23.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "ResponseSpeedHandler.cs",
+              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\ConcretImplementation\\ResponseSpeedHandler.cs",
+              "RelativeDocumentMoniker": "..\\Validations\\ConcretImplementation\\ResponseSpeedHandler.cs",
+              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\ConcretImplementation\\ResponseSpeedHandler.cs",
+              "RelativeToolTip": "..\\Validations\\ConcretImplementation\\ResponseSpeedHandler.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAC0AAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-21T00:13:29.524Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ProcessController.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\CarritoComprasBackend\\Controllers\\ProcessController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProcessController.cs",
               "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\CarritoComprasBackend\\Controllers\\ProcessController.cs",
               "RelativeToolTip": "Controllers\\ProcessController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAiwCMAAAApAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABgAAABSAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-21T02:43:03.415Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "InMemoryRequestRepository.cs",
+              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\InMemoryRequestRepository.cs",
+              "RelativeDocumentMoniker": "..\\Validations\\InMemoryRequestRepository.cs",
+              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\InMemoryRequestRepository.cs",
+              "RelativeToolTip": "..\\Validations\\InMemoryRequestRepository.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAACwAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-21T02:04:07.779Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StoreController.cs",
+              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\CarritoComprasBackend\\Controllers\\StoreController.cs",
+              "RelativeDocumentMoniker": "Controllers\\StoreController.cs",
+              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\CarritoComprasBackend\\Controllers\\StoreController.cs",
+              "RelativeToolTip": "Controllers\\StoreController.cs",
+              "ViewState": "AQIAAI4AAAAAAAAAAAAYwKcAAABLAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-15T22:31:15.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ICreatorFactory.cs",
+              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\ValidationFactory\\Interface\\ICreatorFactory.cs",
+              "RelativeDocumentMoniker": "..\\ValidationFactory\\Interface\\ICreatorFactory.cs",
+              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\ValidationFactory\\Interface\\ICreatorFactory.cs",
+              "RelativeToolTip": "..\\ValidationFactory\\Interface\\ICreatorFactory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-21T00:29:40.404Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "AuthenticationHandler.cs",
+              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\ConcretImplementation\\AuthenticationHandler.cs",
+              "RelativeDocumentMoniker": "..\\Validations\\ConcretImplementation\\AuthenticationHandler.cs",
+              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\ConcretImplementation\\AuthenticationHandler.cs",
+              "RelativeToolTip": "..\\Validations\\ConcretImplementation\\AuthenticationHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-21T00:12:38.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BruteForceHandler.cs",
+              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\ConcretImplementation\\BruteForceHandler.cs",
+              "RelativeDocumentMoniker": "..\\Validations\\ConcretImplementation\\BruteForceHandler.cs",
+              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\ConcretImplementation\\BruteForceHandler.cs",
+              "RelativeToolTip": "..\\Validations\\ConcretImplementation\\BruteForceHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-21T00:13:14.159Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ValidationMap.cs",
+              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\Model\\ValidationMap.cs",
+              "RelativeDocumentMoniker": "..\\Validations\\Model\\ValidationMap.cs",
+              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\Model\\ValidationMap.cs",
+              "RelativeToolTip": "..\\Validations\\Model\\ValidationMap.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-21T00:12:09.169Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FinishValidation.cs",
+              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\ConcretImplementation\\FinishValidation.cs",
+              "RelativeDocumentMoniker": "..\\Validations\\ConcretImplementation\\FinishValidation.cs",
+              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\ConcretImplementation\\FinishValidation.cs",
+              "RelativeToolTip": "..\\Validations\\ConcretImplementation\\FinishValidation.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA0AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-21T04:47:16.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "UserService.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Services\\Domain\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "..\\Services\\Domain\\Services\\UserService.cs",
@@ -129,72 +261,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AuthenticationHandler.cs",
-              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\ConcretImplementation\\AuthenticationHandler.cs",
-              "RelativeDocumentMoniker": "..\\Validations\\ConcretImplementation\\AuthenticationHandler.cs",
-              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\ConcretImplementation\\AuthenticationHandler.cs",
-              "RelativeToolTip": "..\\Validations\\ConcretImplementation\\AuthenticationHandler.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAowCcAAABfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T00:12:38.975Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ValidationMap.cs",
-              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\Model\\ValidationMap.cs",
-              "RelativeDocumentMoniker": "..\\Validations\\Model\\ValidationMap.cs",
-              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\Model\\ValidationMap.cs",
-              "RelativeToolTip": "..\\Validations\\Model\\ValidationMap.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T00:12:09.169Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "BruteForceHandler.cs",
-              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\ConcretImplementation\\BruteForceHandler.cs",
-              "RelativeDocumentMoniker": "..\\Validations\\ConcretImplementation\\BruteForceHandler.cs",
-              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\ConcretImplementation\\BruteForceHandler.cs",
-              "RelativeToolTip": "..\\Validations\\ConcretImplementation\\BruteForceHandler.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAowCcAAABfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T00:13:14.159Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DataSanitizationHandler.cs",
-              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\ConcretImplementation\\DataSanitizationHandler.cs",
-              "RelativeDocumentMoniker": "..\\Validations\\ConcretImplementation\\DataSanitizationHandler.cs",
-              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\ConcretImplementation\\DataSanitizationHandler.cs",
-              "RelativeToolTip": "..\\Validations\\ConcretImplementation\\DataSanitizationHandler.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAgwCcAAABfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T00:12:54.522Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ResponseSpeedHandler.cs",
-              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\ConcretImplementation\\ResponseSpeedHandler.cs",
-              "RelativeDocumentMoniker": "..\\Validations\\ConcretImplementation\\ResponseSpeedHandler.cs",
-              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\ConcretImplementation\\ResponseSpeedHandler.cs",
-              "RelativeToolTip": "..\\Validations\\ConcretImplementation\\ResponseSpeedHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T00:13:29.524Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\CarritoComprasBackend\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
@@ -207,7 +274,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "StoreService.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Services\\Domain\\Services\\StoreService.cs",
               "RelativeDocumentMoniker": "..\\Services\\Domain\\Services\\StoreService.cs",
@@ -220,7 +287,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "Handler.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\Handler.cs",
               "RelativeDocumentMoniker": "..\\Validations\\Handler.cs",
@@ -228,12 +295,11 @@
               "RelativeToolTip": "..\\Validations\\Handler.cs",
               "ViewState": "AQIAAAcAAAAAAAAAAAAUwBcAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T00:16:40.513Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T00:16:40.513Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "IHandler.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\Interface\\IHandler.cs",
               "RelativeDocumentMoniker": "..\\Validations\\Interface\\IHandler.cs",
@@ -241,25 +307,11 @@
               "RelativeToolTip": "..\\Validations\\Interface\\IHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwA0AAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T00:11:36.804Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T00:11:36.804Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "InMemoryRequestRepository.cs",
-              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\InMemoryRequestRepository.cs",
-              "RelativeDocumentMoniker": "..\\Validations\\InMemoryRequestRepository.cs",
-              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\InMemoryRequestRepository.cs",
-              "RelativeToolTip": "..\\Validations\\InMemoryRequestRepository.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAhwBYAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T02:04:07.779Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "Request.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Validations\\Model\\Request.cs",
               "RelativeDocumentMoniker": "..\\Validations\\Model\\Request.cs",
@@ -267,12 +319,11 @@
               "RelativeToolTip": "..\\Validations\\Model\\Request.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwBEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T00:11:56.027Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T00:11:56.027Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "ItemService.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Services\\Domain\\Services\\ItemService.cs",
               "RelativeDocumentMoniker": "..\\Services\\Domain\\Services\\ItemService.cs",
@@ -285,33 +336,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "StoreController.cs",
-              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\CarritoComprasBackend\\Controllers\\StoreController.cs",
-              "RelativeDocumentMoniker": "Controllers\\StoreController.cs",
-              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\CarritoComprasBackend\\Controllers\\StoreController.cs",
-              "RelativeToolTip": "Controllers\\StoreController.cs",
-              "ViewState": "AQIAAJEAAAAAAAAAAAD4v7IAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-15T22:31:15.499Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "ConcreteChainCreator.cs",
-              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\ValidationFactory\\ConcreteChainCreator.cs",
-              "RelativeDocumentMoniker": "..\\ValidationFactory\\ConcreteChainCreator.cs",
-              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\ValidationFactory\\ConcreteChainCreator.cs",
-              "RelativeToolTip": "..\\ValidationFactory\\ConcreteChainCreator.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABgAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T00:57:23.31Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\CarritoComprasBackend\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -319,25 +344,11 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAnwBwAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T01:22:49.469Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T01:22:49.469Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "ICreatorFactory.cs",
-              "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\ValidationFactory\\Interface\\ICreatorFactory.cs",
-              "RelativeDocumentMoniker": "..\\ValidationFactory\\Interface\\ICreatorFactory.cs",
-              "ToolTip": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\ValidationFactory\\Interface\\ICreatorFactory.cs",
-              "RelativeToolTip": "..\\ValidationFactory\\Interface\\ICreatorFactory.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T00:29:40.404Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\DataRepository\\Models\\User.cs",
               "RelativeDocumentMoniker": "..\\DataRepository\\Models\\User.cs",
@@ -345,12 +356,11 @@
               "RelativeToolTip": "..\\DataRepository\\Models\\User.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T23:51:29.901Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-20T23:51:29.901Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "ServiceCollectionExtensions.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\CarritoComprasBackend\\Factories\\ServiceCollectionExtensions.cs",
               "RelativeDocumentMoniker": "Factories\\ServiceCollectionExtensions.cs",
@@ -358,12 +368,11 @@
               "RelativeToolTip": "Factories\\ServiceCollectionExtensions.cs",
               "ViewState": "AQIAADYAAAAAAAAAAAAMwEoAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T01:17:24.94Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T01:17:24.94Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\CarritoComprasBackend\\appsettings.Development.json",
               "RelativeDocumentMoniker": "appsettings.Development.json",
@@ -371,12 +380,11 @@
               "RelativeToolTip": "appsettings.Development.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-03-20T23:50:35.163Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-20T23:50:35.163Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\CarritoComprasBackend\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -384,12 +392,11 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-03-20T23:47:51.639Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-20T23:47:51.639Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "ShoppingCart.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Services\\Domain\\Models\\ShoppingCart.cs",
               "RelativeDocumentMoniker": "..\\Services\\Domain\\Models\\ShoppingCart.cs",
@@ -401,7 +408,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "commands.txt",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\CarritoComprasBackend\\Resources\\commands.txt",
               "RelativeDocumentMoniker": "Resources\\commands.txt",
@@ -414,7 +421,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "PriceCalculatorHandler.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\BusinessRules\\RulesForPrice\\Handlers\\PriceCalculatorHandler.cs",
               "RelativeDocumentMoniker": "..\\BusinessRules\\RulesForPrice\\Handlers\\PriceCalculatorHandler.cs",
@@ -427,7 +434,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "ShoppingCartService.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Services\\Domain\\Services\\ShoppingCartService.cs",
               "RelativeDocumentMoniker": "..\\Services\\Domain\\Services\\ShoppingCartService.cs",
@@ -440,7 +447,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "Item.cs",
               "DocumentMoniker": "D:\\GitHub\\Hennrygb\\postgradoCarritoCompras\\Services\\Domain\\Models\\Item.cs",
               "RelativeDocumentMoniker": "..\\Services\\Domain\\Models\\Item.cs",

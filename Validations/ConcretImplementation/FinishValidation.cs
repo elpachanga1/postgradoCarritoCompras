@@ -7,30 +7,18 @@ using Validations.Model;
 
 namespace Validations.ConcretImplementation
 {
-    public class DataSanitizationHandler : Handler
+    public class FinishValidationHandler : Handler
     {
-        public override string HandlerName => "DataSanitization";
+        public override string HandlerName => "FinishValidation";
         public override void Handle(Request incomingRequest)
         {
             Request request = InMemoryRequestRepository.Instance.GetRequest(incomingRequest.UserName);
             var validationMapEntry = GetDataFromRequestInfo(incomingRequest);
             InMemoryRequestRepository.Instance.SaveRequest(request);
 
-
-            if (NextHandler != null)
-            {
-                if (validationMapEntry.State == true)
-                {
-                    request.RecoveryNextHandlerName = NextHandler.HandlerName;
-                    InMemoryRequestRepository.Instance.SaveRequest(request);
-                    NextHandler.Handle(request);
-                }
-            }
-            else
-            {
-                request.RecoveryNextHandlerName = "The Process is Finished";
-                InMemoryRequestRepository.Instance.SaveRequest(request);
-            }
+            request.RecoveryNextHandlerName = "The Process is Finished";
+            InMemoryRequestRepository.Instance.SaveRequest(request);
+           
         }
 
         private ValidationMap GetDataFromRequestInfo(Request incomingRequest)
@@ -42,7 +30,7 @@ namespace Validations.ConcretImplementation
             {
                 validationMapEntry.State = incomingValidationMapEntry.State;
                 validationMapEntry.CreationDate = incomingValidationMapEntry.CreationDate;
-                validationMapEntry.DetailData = DummyDetailData();                
+                validationMapEntry.DetailData = DummyDetailData();
             }
             return validationMapEntry;
         }
@@ -50,8 +38,6 @@ namespace Validations.ConcretImplementation
         private Dictionary<string, string> DummyDetailData()
         {
             Dictionary<string, string> detailData = new Dictionary<string, string>();
-            detailData.Add("SanitizedFields", "email, phoneNumber");
-            detailData.Add("SanitizationDate", DateTime.Now.ToString());
             return detailData;
         }
     }

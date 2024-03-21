@@ -31,5 +31,21 @@ namespace Validations
             }                
             return request;
         }
+
+        public Request DeleteRequest(string userName)
+        {
+            if (_requests.TryGetValue(userName, out var request))
+            {
+                _requests.Remove(userName);
+                return null; 
+            }
+            return null;
+        }
+
+        public Request GetFirstRequest()
+        {
+            var firstEntry = _requests.FirstOrDefault();
+            return firstEntry.Value;
+        }
     }
 }

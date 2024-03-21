@@ -19,6 +19,13 @@ namespace ShoppingCartBackEnd.Controllers
             this._creatorFactory = creatorFactory;
         }
 
+        [HttpGet("/Process/GetProcess", Name = "GetProcess")]
+        public async Task<IActionResult> GetProcess(string username)
+        {
+            var request = InMemoryRequestRepository.Instance.GetRequest(username);
+
+            return Ok(request);
+        }
 
         [HttpPost("/Process/RunValidation", Name = "RunValidation")]
         public async Task<IActionResult> RunValidation(string username)
@@ -33,17 +40,16 @@ namespace ShoppingCartBackEnd.Controllers
                 validationMapEntry.CreationDate = DateTime.Now;
                 validationMapEntry.State = true;                                
             }
-            handlerChain.Handle(request);
-
-            
+            handlerChain.Handle(request);           
 
             return Ok();
         }
+             
 
-        [HttpGet("/Process/GetValidation", Name = "GetValidation")]
-        public async Task<IActionResult> GetNextValidation(string username)
+        [HttpDelete("/Process/DeleteProcess", Name = "DeleteProcess")]
+        public async Task<IActionResult> DeleteProcess(string username)
         {
-            var request = InMemoryRequestRepository.Instance.GetRequest(username);
+            var request = InMemoryRequestRepository.Instance.DeleteRequest(username);
 
             return Ok(request);
         }
